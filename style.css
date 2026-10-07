@@ -1,183 +1,196 @@
-/* Boop's site: the app's paper and blue ink, its pen for headings, a notebook page
-   for a layout. One loud thing — the year drawing itself in the hero — and quiet
-   spreads after it. */
+/* Boop's site: a clean product page in the manner of today's iOS apps — one strong
+   sans, a lot of air, the app itself shown large on real-looking iPhones, and the
+   app's doodles kept to a few accents. */
 
 :root {
-  --paper: #F7F5EF;
-  --paper-deep: #EFECE3;
-  --ink: #2B3AC9;
-  --text: #24253A;
-  --muted: #62647E;
-  --dot: rgba(43, 58, 201, 0.12);
-  --line: rgba(43, 58, 201, 0.2);
+  --bg: #FBFAF6;
+  --surface: #FFFFFF;
+  --tint: #F3F1EA;
+  --text: #15161A;
+  --muted: #6B6C76;
+  --line: rgba(21, 22, 26, 0.08);
+  --blue: #2B3AC9;
   --sun: #F6C945;
-  --slip: #FFFFFF;
-  --mark-ink: #24253A;
-  --shadow: 0 1px 2px rgba(36, 37, 58, 0.08), 0 10px 30px -12px rgba(36, 37, 58, 0.28);
-  --pen: "Pangolin", "Comic Sans MS", cursive;
-  --body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
+  --device: #0F1014;
+  --shadow-lg: 0 40px 80px -30px rgba(21, 22, 26, 0.35), 0 12px 24px -12px rgba(21, 22, 26, 0.18);
+  --shadow-sm: 0 1px 2px rgba(21, 22, 26, 0.06), 0 8px 24px -12px rgba(21, 22, 26, 0.16);
+  --font: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #16171C;
-    --paper-deep: #1E1F26;
-    --ink: #9EA8FF;
-    --text: #DCDEF2;
-    --muted: #9A9DBA;
-    --dot: rgba(217, 220, 245, 0.09);
-    --line: rgba(217, 220, 245, 0.16);
-    --slip: #23242C;
-    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+    --bg: #0C0D10;
+    --surface: #16171C;
+    --tint: #16171C;
+    --text: #F2F2F4;
+    --muted: #9A9BA6;
+    --line: rgba(255, 255, 255, 0.08);
+    --blue: #8F9BFF;
+    --shadow-lg: 0 40px 80px -30px rgba(0, 0, 0, 0.8), 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #16171C;
-  --paper-deep: #1E1F26;
-  --ink: #9EA8FF;
-  --text: #DCDEF2;
-  --muted: #9A9DBA;
-  --dot: rgba(217, 220, 245, 0.09);
-  --line: rgba(217, 220, 245, 0.16);
-  --slip: #23242C;
-  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
+  --bg: #0C0D10;
+  --surface: #16171C;
+  --tint: #16171C;
+  --text: #F2F2F4;
+  --muted: #9A9BA6;
+  --line: rgba(255, 255, 255, 0.08);
+  --blue: #8F9BFF;
+  --shadow-lg: 0 40px 80px -30px rgba(0, 0, 0, 0.8), 0 12px 24px -12px rgba(0, 0, 0, 0.6);
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5), 0 8px 24px -12px rgba(0, 0, 0, 0.6);
   color-scheme: dark;
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
-  margin: 0;
-  background-color: var(--paper);
-  /* The app's dot-grid paper. */
-  background-image: radial-gradient(var(--dot) 1.1px, transparent 1.5px);
-  background-size: 24px 24px;
-  color: var(--text);
-  font: 400 1.0625rem/1.6 var(--body);
+  margin: 0; background: var(--bg); color: var(--text);
+  font: 400 1.0625rem/1.55 var(--font);
+  -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
 }
-img, video { max-width: 100%; }
-a { color: var(--ink); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
-a:hover { text-decoration-thickness: 2px; }
-a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
+img, video { max-width: 100%; display: block; }
+a { color: inherit; }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
 
-.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
-@media (min-width: 640px) { .wrap { padding: 0 32px; } }
+.wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+@media (min-width: 720px) { .wrap { padding: 0 40px; } }
 
-/* Ink drawings from the app are black on paper; at night they turn to light ink. */
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ink-art { filter: invert(0.88) hue-rotate(180deg); } }
-:root[data-theme="dark"] .ink-art { filter: invert(0.88) hue-rotate(180deg); }
+/* Nav */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 76px; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 1.15rem; letter-spacing: -0.02em; }
+.mark { width: 34px; height: 34px; border-radius: 9px; background: var(--sun); display: grid; place-items: center; flex: none; }
+.mark svg { width: 26px; height: 26px; }
+.char { fill: none; stroke: #15161A; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
+.top nav { display: flex; align-items: center; gap: 28px; font-size: 0.95rem; color: var(--muted); }
+.top nav a { text-decoration: none; }
+.top nav a:hover { color: var(--text); }
+@media (max-width: 560px) { .top nav .link { display: none; } }
 
-/* Header */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
-.brand { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font: 400 1.6rem/1 var(--pen); }
-.mark { width: 42px; height: 42px; border-radius: 12px; background: var(--sun); display: grid; place-items: center; flex: none; transform: rotate(-4deg); }
-.mark svg { width: 32px; height: 32px; }
-.top nav { display: flex; gap: 22px; font-size: 0.98rem; }
-.char { fill: none; stroke: var(--mark-ink); stroke-width: 2.15; stroke-linecap: round; stroke-linejoin: round; }
-.mark .char { stroke: #24253A; }
-
-/* Headings are written with the app's pen. */
-h1, h2 { font-family: var(--pen); font-weight: 400; color: var(--ink); }
-h1 { margin: 0 0 22px; font-size: clamp(3.1rem, 9vw, 5.75rem); line-height: 0.95; letter-spacing: -0.01em; }
-h2 { margin: 0 0 14px; font-size: clamp(2rem, 4.6vw, 2.9rem); line-height: 1.05; }
-
-/* Hero: the words on the left, the year drawing itself on the right. */
-.hero { display: grid; gap: 36px; padding: 24px 0 0; align-items: center; }
-@media (min-width: 920px) { .hero { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 56px; padding-top: 40px; } }
-.lede { margin: 0 0 30px; font-size: 1.2rem; line-height: 1.55; max-width: 30em; }
-.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
-/* Until Boop is out, a plain notice in the App Store badge's place. On release day this
-   becomes Apple's official "Download on the App Store" badge, linking to the app. */
+/* The App Store button, drawn after Apple's badge: the logo, "Download on the" small and
+   "App Store" large. Until Boop is out it leads nowhere; on release day it links to
+   https://apps.apple.com/app/id6818434144. */
 .store {
-  display: inline-flex; align-items: center; gap: 10px;
-  padding: 13px 22px; border-radius: 14px;
-  background: var(--text); color: var(--paper);
-  font-weight: 700; font-size: 1rem; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 10px; height: 56px; padding: 0 22px 0 18px;
+  border-radius: 14px; background: #000; color: #fff; border: 1px solid #A6A6A6;
+  white-space: nowrap; text-align: left;
 }
-.store svg { width: 18px; height: 18px; }
-.cta small { color: var(--muted); font-size: 0.95rem; }
+.store svg { width: 24px; height: 28px; flex: none; }
+.store-text { display: grid; line-height: 1.05; }
+.store-text small { font-size: 0.72rem; font-weight: 500; letter-spacing: 0.01em; }
+.store-text b { font-size: 1.45rem; font-weight: 600; letter-spacing: -0.025em; }
+.store.small { height: 40px; padding: 0 14px 0 12px; border-radius: 10px; gap: 7px; }
+.store.small svg { width: 16px; height: 19px; }
+.store.small .store-text small { font-size: 0.55rem; }
+.store.small .store-text b { font-size: 1.02rem; }
 
-/* The year: a page of doodles, each day drawn in its habit's colour, the days to come
-   as dots. */
-.year {
-  position: relative; margin: 0; padding: 22px 22px 18px;
-  background: var(--slip); border-radius: 22px; box-shadow: var(--shadow);
-  transform: rotate(1.2deg);
+/* Headings */
+h1, h2, h3 { margin: 0; letter-spacing: -0.035em; font-weight: 700; }
+h1 { font-size: clamp(2.9rem, 8.4vw, 6rem); line-height: 0.98; }
+h2 { font-size: clamp(2.2rem, 5.2vw, 3.6rem); line-height: 1.02; }
+h3 { font-size: 1.3rem; line-height: 1.2; letter-spacing: -0.02em; }
+.sub { color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.3rem); line-height: 1.5; max-width: 34em; }
+
+/* Hero */
+.hero { text-align: center; padding: 56px 0 0; }
+.hero .sub { margin: 24px auto 32px; }
+.hero .cta { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.hero .cta small { color: var(--muted); font-size: 0.92rem; }
+.stage { position: relative; display: flex; justify-content: center; align-items: flex-end; margin: 72px auto 0; height: clamp(420px, 62vw, 700px); }
+.stage .device { position: absolute; bottom: 0; }
+.stage .center { z-index: 2; width: clamp(230px, 30vw, 330px); }
+.stage .left, .stage .right { width: clamp(190px, 25vw, 286px); bottom: 6%; opacity: 0.98; }
+.stage .left { transform: translateX(-74%) rotate(-7deg); transform-origin: bottom right; }
+.stage .right { transform: translateX(74%) rotate(7deg); transform-origin: bottom left; }
+@media (max-width: 640px) { .stage .left, .stage .right { display: none; } }
+/* The hero's floor: the phones stand on the page, fading out under them. */
+.stage::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 22%; background: linear-gradient(to bottom, transparent, var(--bg)); z-index: 3; pointer-events: none; }
+
+/* An iPhone, drawn: a black band, the screen with its corners and the Dynamic Island,
+   and the time over the app's own paper. */
+.device {
+  padding: 3.2%; border-radius: 15% / 6.9%;
+  background: var(--device); box-shadow: var(--shadow-lg), inset 0 0 0 1.5px #2A2B31;
 }
-.year-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 4px 12px; font-family: var(--pen); color: var(--ink); }
-.year-head b { font-weight: 400; font-size: 1.7rem; }
-.year-head span { color: var(--muted); font-size: 1.05rem; }
-.days { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px; }
-@media (min-width: 520px) { .days { grid-template-columns: repeat(14, minmax(0, 1fr)); } }
-.days span { aspect-ratio: 1; display: grid; place-items: center; }
-.days svg { width: 118%; height: 118%; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
-.days .drawn svg { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 0.7s ease-out forwards; animation-delay: calc(var(--i) * 16ms + 150ms); }
-.days .dot::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); opacity: 0.4; }
-.days .ahead::before { opacity: 0.15; }
-.days .today { position: relative; }
-.days .today::after { content: ""; position: absolute; inset: 6%; border-radius: 50%; background: var(--ink); opacity: 0.12; }
-@keyframes draw { to { stroke-dashoffset: 0; } }
-.year figcaption { margin: 12px 4px 0; color: var(--muted); font-size: 0.9rem; }
-
-/* The ruled line the inhabitants walk along, under the hero. */
-.margin { position: relative; height: 112px; margin: 18px 0 0; border-bottom: 2px solid var(--line); overflow: hidden; }
-.walker { position: absolute; bottom: -12px; width: 108px; height: 108px; will-change: transform; }
-
-/* Spreads: a picture and a few lines, side by side, alternating. */
-.spread { display: grid; gap: 32px; align-items: center; padding: 88px 0 0; }
-@media (min-width: 880px) {
-  .spread { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; padding-top: 120px; }
-  .spread.flip .art { order: 2; }
+.screen { position: relative; width: 100%; aspect-ratio: 1320 / 2868; border-radius: 12.4% / 5.7%; overflow: hidden; background: #F7F5EF; }
+.screen img { width: 100%; height: 100%; object-fit: cover; }
+.screen::before {
+  /* The Dynamic Island. */
+  content: ""; position: absolute; top: 1.6%; left: 50%; width: 31%; aspect-ratio: 3.4; transform: translateX(-50%);
+  border-radius: 999px; background: #000; z-index: 2;
 }
-.spread p { margin: 0 0 14px; max-width: 30em; }
-.art { margin: 0; display: grid; justify-items: center; }
-/* A phone, as the app is shown in the store. */
-.phone {
-  width: min(300px, 76vw); border-radius: 40px; padding: 9px;
-  background: #24253A; box-shadow: var(--shadow); transform: rotate(-1.5deg);
+.screen.dark { background: #16171C; }
+
+/* Features: a big statement beside the app, in turn. */
+.feature { display: grid; gap: 40px; align-items: center; padding: 140px 0 0; }
+@media (min-width: 900px) {
+  .feature { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 80px; padding-top: 180px; }
+  .feature.flip .visual { order: -1; }
 }
-.flip .phone { transform: rotate(1.5deg); }
-.phone img, .phone video { display: block; width: 100%; height: auto; border-radius: 32px; background: #F7F5EF; }
-.sheet { width: min(340px, 82vw); border-radius: 26px; box-shadow: var(--shadow); transform: rotate(1deg); background: #F7F5EF; }
+.feature .sub { margin: 20px 0 0; }
+.visual { position: relative; display: grid; place-items: center; padding: 48px 0; border-radius: 36px; background: var(--tint); overflow: hidden; }
+.visual .device { width: min(300px, 70vw); }
+.points { margin: 28px 0 0; padding: 0; list-style: none; display: grid; gap: 14px; }
+.points li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 12px; }
+.points svg { width: 20px; height: 20px; margin-top: 3px; fill: none; stroke: var(--blue); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+/* A doodle from the app laid on a feature's backdrop, as an accent. */
+.accent { position: absolute; width: 64px; height: 64px; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; opacity: 0.9; }
 
-/* Who turns up in the margins: two met, the rest still to come. */
-.dwellers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 120px)); gap: 18px 22px; justify-content: center; }
-.dwellers li { display: grid; justify-items: center; gap: 6px; text-align: center; font-family: var(--pen); font-size: 1.15rem; color: var(--ink); }
-.dwellers img { width: 100%; aspect-ratio: 1; }
-.dwellers .unknown span:first-child {
-  width: 100%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%;
-  border: 2px dashed var(--line); font-size: 2.6rem; color: var(--muted);
+/* Bento: the rest, in tiles of different sizes. */
+.more { padding: 180px 0 0; }
+.more h2 { max-width: 14em; }
+.bento { display: grid; gap: 16px; margin-top: 48px; }
+@media (min-width: 760px) { .bento { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
+.tile { position: relative; border-radius: 28px; background: var(--surface); box-shadow: var(--shadow-sm); padding: 28px; overflow: hidden; min-height: 260px; display: flex; flex-direction: column; }
+.tile p { margin: 8px 0 0; color: var(--muted); max-width: 26em; }
+@media (min-width: 760px) {
+  .tile.wide { grid-column: span 4; }
+  .tile.narrow { grid-column: span 2; }
+  .tile.half { grid-column: span 3; }
 }
-.dwellers li:nth-child(odd) { transform: rotate(-3deg); }
-.dwellers li:nth-child(even) { transform: rotate(2deg); }
+.tile .peek { margin-top: auto; padding-top: 24px; display: flex; justify-content: center; }
+.tile .peek { margin-bottom: -28px; }
+.tile .peek .device { width: 240px; height: 300px; overflow: hidden; border-bottom-left-radius: 0; border-bottom-right-radius: 0; padding-bottom: 0; }
+.tile .peek img.widget { width: 100%; max-width: 380px; height: 300px; object-fit: cover; object-position: top; border-radius: 20px 20px 0 0; }
+.badges { display: flex; gap: 10px; margin-top: auto; padding-top: 24px; }
+.badges img, .badges span { width: 64px; height: 64px; }
+.badges span { display: grid; place-items: center; border-radius: 50%; border: 2px dashed var(--line); color: var(--muted); font-weight: 700; font-size: 1.4rem; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ink-art { filter: invert(0.9) hue-rotate(180deg); } }
+:root[data-theme="dark"] .ink-art { filter: invert(0.9) hue-rotate(180deg); }
+.big { font-size: clamp(3rem, 6vw, 4.4rem); font-weight: 700; letter-spacing: -0.04em; line-height: 1; margin-top: auto; padding-top: 24px; }
 
-/* Boop Plus: what is free and what it adds, said once. */
-.plus { margin: 120px 0 0; padding: 40px 28px; border-radius: 28px; background: var(--paper-deep); display: grid; gap: 24px; }
-@media (min-width: 880px) { .plus { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; padding: 56px; } }
-.plus p { margin: 0; max-width: 30em; }
-.plus ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
-.plus li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; }
-.plus li svg { width: 26px; height: 26px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
+/* Plus */
+.plus { margin: 180px 0 0; padding: 56px 28px; border-radius: 36px; background: var(--text); color: var(--bg); display: grid; gap: 36px; }
+@media (min-width: 900px) { .plus { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 72px; gap: 64px; } }
+.plus .sub { color: color-mix(in srgb, var(--bg) 70%, transparent); margin: 18px 0 0; }
+.plus ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 18px; align-content: center; }
+.plus li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 14px; font-size: 1.1rem; }
+.plus li svg { width: 24px; height: 24px; fill: none; stroke: var(--sun); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
 
-/* Private */
-.private { display: grid; gap: 24px; align-items: center; padding: 104px 0 96px; }
-@media (min-width: 880px) { .private { grid-template-columns: 180px minmax(0, 1fr); gap: 56px; } }
-.private .char { stroke: var(--ink); }
-.private > svg { width: 150px; height: 160px; }
-.private p { margin: 0 0 12px; max-width: 36em; }
+/* Closing */
+.closing { text-align: center; padding: 180px 0 140px; }
+.closing .sub { margin: 20px auto 32px; }
 
 /* Text pages */
-.page { max-width: 42em; padding: 24px 0 72px; }
-.page h1 { font-size: clamp(2.6rem, 7vw, 3.75rem); margin-bottom: 8px; }
+.page { max-width: 42em; padding: 32px 0 96px; }
+.page h1 { font-size: clamp(2.6rem, 7vw, 3.6rem); margin-bottom: 10px; }
 .page .meta { color: var(--muted); margin: 0 0 40px; }
-.page h2 { margin-top: 44px; font-size: clamp(1.7rem, 4vw, 2.1rem); }
+.page h2 { margin: 44px 0 10px; font-size: clamp(1.5rem, 3.4vw, 1.9rem); }
 .page p { margin: 0 0 14px; }
+.page a { color: var(--blue); }
 
 /* Footer */
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
-.foot nav { display: flex; gap: 20px; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
+.foot nav { display: flex; gap: 22px; }
+.foot a { text-decoration: none; }
+.foot a:hover { color: var(--text); }
 
+/* Coming into view as the page is read. */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1); }
+.reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .days .drawn svg { animation: none; stroke-dashoffset: 0; }
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
