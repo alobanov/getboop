@@ -158,32 +158,32 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 
 /* Inhabitants, on a dark band: the words and a character's page, then the streak they
    come along, then two of them walking. */
-.night { margin-top: 112px; background: radial-gradient(70% 60% at 80% 20%, #2A2E6E 0%, rgba(42, 46, 110, 0) 70%), #14163A; color: #F1F2FF; padding: 96px 0 0; overflow: hidden; }
+.night { margin-top: 96px; background: radial-gradient(70% 60% at 80% 20%, #2A2E6E 0%, rgba(42, 46, 110, 0) 70%), #14163A; color: #F1F2FF; padding: 64px 0 0; overflow: hidden; }
 .night .sub { color: #B9BCE3; }
 .kicker.on-dark { color: #9EA3D6; margin-bottom: 12px; }
-.night .grid { display: grid; gap: 48px; align-items: center; }
+.night .grid { display: grid; gap: 32px; align-items: center; }
 @media (min-width: 900px) { .night .grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 64px; } }
 .night h2 .hl { color: var(--sun); }
 .night .hl path { stroke: var(--sun); }
 .character { position: relative; display: grid; place-items: center; }
-.character .phone { width: min(290px, 70vw); transform: rotate(3deg); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7), inset 0 0 0 1px #3B3C44; }
+.character .phone { width: min(240px, 62vw); transform: rotate(3deg); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7), inset 0 0 0 1px #3B3C44; }
 .dark-chip { background: rgba(255, 255, 255, 0.96); color: var(--text); }
 
 /* The streak: a line from the first day, the stops on it, filled up to the last one met. */
-.streak { list-style: none; position: relative; margin: 88px 0 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(84px, 1fr)); gap: 8px; overflow-x: auto; scrollbar-width: none; }
-.streak::before, .streak::after { content: ""; position: absolute; top: 42px; left: 6%; height: 3px; border-radius: 3px; }
+.streak { list-style: none; position: relative; margin: 32px 0 0; padding: 4px 0 0; display: grid; grid-template-columns: repeat(8, minmax(52px, 1fr)); gap: 4px; overflow-x: auto; scrollbar-width: none; }
+.streak::before, .streak::after { content: ""; position: absolute; top: 30px; left: 6%; height: 3px; border-radius: 3px; }
 .streak::before { right: 6%; background: rgba(255, 255, 255, 0.12); }
 .streak::after { width: 13%; background: linear-gradient(90deg, #F6C945, #FF5E4D); box-shadow: 0 0 18px rgba(255, 94, 77, 0.6); }
 .stop { position: relative; display: grid; justify-items: center; gap: 4px; text-align: center; z-index: 1; }
-.disc { width: 84px; height: 84px; margin-bottom: 10px; border-radius: 50%; display: grid; place-items: center; background: #1E2150; border: 2px dashed rgba(255, 255, 255, 0.22); color: rgba(255, 255, 255, 0.45); font-size: 1.8rem; font-weight: 800; }
+.disc { width: 56px; height: 56px; margin-bottom: 6px; border-radius: 50%; display: grid; place-items: center; background: #1E2150; border: 2px dashed rgba(255, 255, 255, 0.22); color: rgba(255, 255, 255, 0.45); font-size: 1.2rem; font-weight: 800; }
 .met .disc { background: #fff; border: 0; box-shadow: 0 0 0 5px rgba(246, 201, 69, 0.35), 0 14px 30px -10px rgba(0, 0, 0, 0.7); transform: rotate(calc(-6deg + var(--i) * 9deg)); }
 .disc img { width: 92%; height: 92%; }
-.stop b { font-size: 1rem; font-weight: 700; }
-.stop small { font-size: 0.85rem; color: #9EA3D6; }
+.stop b { font-size: 0.85rem; font-weight: 700; }
+.stop small { font-size: 0.72rem; color: #9EA3D6; }
 .met small { color: var(--sun); font-weight: 600; }
 
-.walkway { position: relative; height: 150px; margin-top: 40px; border-bottom: 2px solid rgba(255, 255, 255, 0.18); }
-.walker { position: absolute; bottom: -16px; width: 140px; height: 140px; filter: invert(1); will-change: transform; }
+.walkway { position: relative; height: 104px; margin-top: 8px; border-bottom: 2px solid rgba(255, 255, 255, 0.18); }
+.walker { position: absolute; bottom: -12px; width: 100px; height: 100px; filter: invert(1); will-change: transform; }
 
 /* Bento, as Apple lays it: tiles of different sizes and colors on a tight grid, a small
    kicker, a large claim, and the picture running off the tile's edge. */
