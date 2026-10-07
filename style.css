@@ -1,32 +1,47 @@
+/* Boop's site: the app's paper and blue ink, its pen for headings, a notebook page
+   for a layout. One loud thing — the year drawing itself in the hero — and quiet
+   spreads after it. */
+
 :root {
   --paper: #F7F5EF;
+  --paper-deep: #EFECE3;
   --ink: #2B3AC9;
-  --text: #1E2150;
-  --muted: #5B5F86;
-  --dot: rgba(43, 58, 201, 0.13);
+  --text: #24253A;
+  --muted: #62647E;
+  --dot: rgba(43, 58, 201, 0.12);
+  --line: rgba(43, 58, 201, 0.2);
   --sun: #F6C945;
-  --mark-ink: #1E2150;
-  --line: rgba(43, 58, 201, 0.18);
+  --slip: #FFFFFF;
+  --mark-ink: #24253A;
+  --shadow: 0 1px 2px rgba(36, 37, 58, 0.08), 0 10px 30px -12px rgba(36, 37, 58, 0.28);
+  --pen: "Pangolin", "Comic Sans MS", cursive;
+  --body: "Atkinson Hyperlegible Next", "Atkinson Hyperlegible", system-ui, sans-serif;
   color-scheme: light;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #16171C;
+    --paper-deep: #1E1F26;
     --ink: #9EA8FF;
-    --text: #D9DCF5;
+    --text: #DCDEF2;
     --muted: #9A9DBA;
-    --dot: rgba(217, 220, 245, 0.10);
+    --dot: rgba(217, 220, 245, 0.09);
     --line: rgba(217, 220, 245, 0.16);
+    --slip: #23242C;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #16171C;
+  --paper-deep: #1E1F26;
   --ink: #9EA8FF;
-  --text: #D9DCF5;
+  --text: #DCDEF2;
   --muted: #9A9DBA;
-  --dot: rgba(217, 220, 245, 0.10);
+  --dot: rgba(217, 220, 245, 0.09);
   --line: rgba(217, 220, 245, 0.16);
+  --slip: #23242C;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 12px 32px -12px rgba(0, 0, 0, 0.7);
   color-scheme: dark;
 }
 
@@ -37,76 +52,132 @@ body {
   background-color: var(--paper);
   /* The app's dot-grid paper. */
   background-image: radial-gradient(var(--dot) 1.1px, transparent 1.5px);
-  background-size: 22px 22px;
+  background-size: 24px 24px;
   color: var(--text);
-  font: 400 1rem/1.65 "Roboto Mono", ui-monospace, monospace;
+  font: 400 1.0625rem/1.6 var(--body);
 }
+img, video { max-width: 100%; }
 a { color: var(--ink); text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
-a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-radius: 6px; }
 
-.wrap { max-width: 1040px; margin: 0 auto; padding: 0 16px; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
 @media (min-width: 640px) { .wrap { padding: 0 32px; } }
 
+/* Ink drawings from the app are black on paper; at night they turn to light ink. */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .ink-art { filter: invert(0.88) hue-rotate(180deg); } }
+:root[data-theme="dark"] .ink-art { filter: invert(0.88) hue-rotate(180deg); }
+
 /* Header */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 24px 0; }
-.brand { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; }
-.mark { width: 40px; height: 40px; border-radius: 11px; background: var(--sun); display: grid; place-items: center; flex: none; }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 0; }
+.brand { display: flex; align-items: center; gap: 12px; color: var(--text); text-decoration: none; font: 400 1.6rem/1 var(--pen); }
+.mark { width: 42px; height: 42px; border-radius: 12px; background: var(--sun); display: grid; place-items: center; flex: none; transform: rotate(-4deg); }
 .mark svg { width: 32px; height: 32px; }
-.top nav { display: flex; gap: 20px; font-size: 0.95rem; }
-
+.top nav { display: flex; gap: 22px; font-size: 0.98rem; }
 .char { fill: none; stroke: var(--mark-ink); stroke-width: 2.15; stroke-linecap: round; stroke-linejoin: round; }
+.mark .char { stroke: #24253A; }
 
-/* Hero */
-.hero { display: grid; gap: 40px; padding: 32px 0 56px; align-items: center; }
-@media (min-width: 880px) { .hero { grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; padding: 48px 0 72px; } }
-h1 {
-  margin: 0 0 24px;
-  font-size: clamp(2.75rem, 8vw, 5rem);
-  line-height: 1;
-  font-weight: 500;
-  letter-spacing: -0.055em;
-  color: var(--ink);
+/* Headings are written with the app's pen. */
+h1, h2 { font-family: var(--pen); font-weight: 400; color: var(--ink); }
+h1 { margin: 0 0 22px; font-size: clamp(3.1rem, 9vw, 5.75rem); line-height: 0.95; letter-spacing: -0.01em; }
+h2 { margin: 0 0 14px; font-size: clamp(2rem, 4.6vw, 2.9rem); line-height: 1.05; }
+
+/* Hero: the words on the left, the year drawing itself on the right. */
+.hero { display: grid; gap: 36px; padding: 24px 0 0; align-items: center; }
+@media (min-width: 920px) { .hero { grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 56px; padding-top: 40px; } }
+.lede { margin: 0 0 30px; font-size: 1.2rem; line-height: 1.55; max-width: 30em; }
+.cta { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; }
+/* Until Boop is out, a plain notice in the App Store badge's place. On release day this
+   becomes Apple's official "Download on the App Store" badge, linking to the app. */
+.store {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 13px 22px; border-radius: 14px;
+  background: var(--text); color: var(--paper);
+  font-weight: 700; font-size: 1rem; text-decoration: none;
 }
-.lede { margin: 0 0 28px; font-size: 1.08rem; max-width: 34em; }
-.soon { margin: 0; color: var(--muted); }
-.shot { justify-self: center; margin: 0; width: min(300px, 78vw); }
-.shot picture, .shot img { display: block; }
-.shot img { width: 100%; height: auto; border-radius: 13% / 6%; border: 1px solid var(--line); background: #F7F5EF; }
+.store svg { width: 18px; height: 18px; }
+.cta small { color: var(--muted); font-size: 0.95rem; }
 
-/* Two weeks of days */
-.days { padding: 8px 0 72px; }
-.days h2 { font-size: 1rem; font-weight: 500; color: var(--muted); margin: 0 0 16px; letter-spacing: 0; }
-.strip { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 12px 8px; }
-@media (min-width: 880px) { .strip { grid-template-columns: repeat(14, minmax(0, 1fr)); } }
-.strip li { display: flex; flex-direction: column; align-items: center; gap: 4px; }
-.strip svg { width: 100%; max-width: 64px; aspect-ratio: 1; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 0.8s ease-out forwards; animation-delay: calc(var(--i) * 110ms + 200ms); }
-.strip time { font-size: 0.8rem; color: var(--muted); }
-.strip .today time { color: var(--text); font-weight: 700; }
+/* The year: a page of doodles, each day drawn in its habit's colour, the days to come
+   as dots. */
+.year {
+  position: relative; margin: 0; padding: 22px 22px 18px;
+  background: var(--slip); border-radius: 22px; box-shadow: var(--shadow);
+  transform: rotate(1.2deg);
+}
+.year-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 4px 12px; font-family: var(--pen); color: var(--ink); }
+.year-head b { font-weight: 400; font-size: 1.7rem; }
+.year-head span { color: var(--muted); font-size: 1.05rem; }
+.days { display: grid; grid-template-columns: repeat(10, minmax(0, 1fr)); gap: 2px; }
+@media (min-width: 520px) { .days { grid-template-columns: repeat(14, minmax(0, 1fr)); } }
+.days span { aspect-ratio: 1; display: grid; place-items: center; }
+.days svg { width: 118%; height: 118%; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.days .drawn svg { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 0.7s ease-out forwards; animation-delay: calc(var(--i) * 16ms + 150ms); }
+.days .dot::before { content: ""; width: 4px; height: 4px; border-radius: 50%; background: var(--ink); opacity: 0.4; }
+.days .ahead::before { opacity: 0.15; }
+.days .today { position: relative; }
+.days .today::after { content: ""; position: absolute; inset: 6%; border-radius: 50%; background: var(--ink); opacity: 0.12; }
 @keyframes draw { to { stroke-dashoffset: 0; } }
-@media (prefers-reduced-motion: reduce) { .strip svg { animation: none; stroke-dashoffset: 0; } }
+.year figcaption { margin: 12px 4px 0; color: var(--muted); font-size: 0.9rem; }
 
-/* How it works */
-.ideas { display: grid; gap: 40px; padding: 0 0 80px; }
-@media (min-width: 880px) { .ideas { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; } }
-.idea svg { width: 56px; height: 56px; fill: none; stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; margin-bottom: 8px; }
-h2 { font-size: 1.35rem; line-height: 1.25; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 8px; }
-.idea p { margin: 0; max-width: 32em; }
+/* The ruled line the inhabitants walk along, under the hero. */
+.margin { position: relative; height: 112px; margin: 18px 0 0; border-bottom: 2px solid var(--line); overflow: hidden; }
+.walker { position: absolute; bottom: -12px; width: 108px; height: 108px; will-change: transform; }
+
+/* Spreads: a picture and a few lines, side by side, alternating. */
+.spread { display: grid; gap: 32px; align-items: center; padding: 88px 0 0; }
+@media (min-width: 880px) {
+  .spread { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 72px; padding-top: 120px; }
+  .spread.flip .art { order: 2; }
+}
+.spread p { margin: 0 0 14px; max-width: 30em; }
+.art { margin: 0; display: grid; justify-items: center; }
+/* A phone, as the app is shown in the store. */
+.phone {
+  width: min(300px, 76vw); border-radius: 40px; padding: 9px;
+  background: #24253A; box-shadow: var(--shadow); transform: rotate(-1.5deg);
+}
+.flip .phone { transform: rotate(1.5deg); }
+.phone img, .phone video { display: block; width: 100%; height: auto; border-radius: 32px; background: #F7F5EF; }
+.sheet { width: min(340px, 82vw); border-radius: 26px; box-shadow: var(--shadow); transform: rotate(1deg); background: #F7F5EF; }
+
+/* Who turns up in the margins: two met, the rest still to come. */
+.dwellers { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 120px)); gap: 18px 22px; justify-content: center; }
+.dwellers li { display: grid; justify-items: center; gap: 6px; text-align: center; font-family: var(--pen); font-size: 1.15rem; color: var(--ink); }
+.dwellers img { width: 100%; aspect-ratio: 1; }
+.dwellers .unknown span:first-child {
+  width: 100%; aspect-ratio: 1; display: grid; place-items: center; border-radius: 50%;
+  border: 2px dashed var(--line); font-size: 2.6rem; color: var(--muted);
+}
+.dwellers li:nth-child(odd) { transform: rotate(-3deg); }
+.dwellers li:nth-child(even) { transform: rotate(2deg); }
+
+/* Boop Plus: what is free and what it adds, said once. */
+.plus { margin: 120px 0 0; padding: 40px 28px; border-radius: 28px; background: var(--paper-deep); display: grid; gap: 24px; }
+@media (min-width: 880px) { .plus { grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 56px; padding: 56px; } }
+.plus p { margin: 0; max-width: 30em; }
+.plus ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.plus li { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; }
+.plus li svg { width: 26px; height: 26px; fill: none; stroke: var(--ink); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; margin-top: 1px; }
 
 /* Private */
-.private { display: grid; gap: 24px; align-items: center; padding: 40px 0 88px; border-top: 1px solid var(--line); }
-@media (min-width: 880px) { .private { grid-template-columns: 180px minmax(0, 1fr); gap: 48px; } }
+.private { display: grid; gap: 24px; align-items: center; padding: 104px 0 96px; }
+@media (min-width: 880px) { .private { grid-template-columns: 180px minmax(0, 1fr); gap: 56px; } }
 .private .char { stroke: var(--ink); }
 .private > svg { width: 150px; height: 160px; }
-.private p { margin: 0 0 12px; max-width: 38em; }
+.private p { margin: 0 0 12px; max-width: 36em; }
 
 /* Text pages */
 .page { max-width: 42em; padding: 24px 0 72px; }
-.page h1 { font-size: clamp(2.25rem, 6vw, 3.25rem); margin-bottom: 8px; }
+.page h1 { font-size: clamp(2.6rem, 7vw, 3.75rem); margin-bottom: 8px; }
 .page .meta { color: var(--muted); margin: 0 0 40px; }
-.page h2 { margin-top: 40px; }
+.page h2 { margin-top: 44px; font-size: clamp(1.7rem, 4vw, 2.1rem); }
 .page p { margin: 0 0 14px; }
 
 /* Footer */
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.9rem; }
+.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 24px 0 40px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.95rem; }
 .foot nav { display: flex; gap: 20px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .days .drawn svg { animation: none; stroke-dashoffset: 0; }
+}
