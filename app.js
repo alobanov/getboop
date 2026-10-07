@@ -48,6 +48,21 @@
     });
   }
 
+  // The year widget's dots: the days so far in their colors, the rest faint.
+  const wyear = document.getElementById('wyear');
+  if (wyear) {
+    const now = new Date();
+    const today = Math.floor((now - new Date(now.getFullYear(), 0, 1)) / 864e5);
+    let seed = 5;
+    const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const html = [];
+    for (let i = 0; i < 365; i++) {
+      const colour = i <= today && random() > 0.15 ? colours[Math.floor(random() * colours.length)] : '';
+      html.push(colour ? `<i style="background:${colour}"></i>` : '<i></i>');
+    }
+    wyear.innerHTML = html.join('');
+  }
+
   // A habit three times a month, counted up to done.
   const clean = document.getElementById('clean');
   if (clean) {

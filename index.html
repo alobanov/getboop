@@ -12,7 +12,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;700&family=Pangolin&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
 </head>
@@ -172,7 +172,7 @@
 </article>
 <article class="tile t-habits warm reveal">
 <p class="kicker">Habits over a period</p>
-<p class="claim">Three times a month,<br>any days you like.</p>
+<p class="claim">Three times a month, any days.</p>
 <div class="habit" aria-hidden="true">
 <div class="habit-row" id="clean"><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#home"/></svg><span><b>Clean the flat</b><small>3 times a month</small></span><span class="count">0/3</span></div>
 <div class="habit-row"><svg viewBox="0 0 40 40" style="stroke:#B07A4F" aria-hidden="true"><use href="img/doodles.svg#coffee"/></svg><span><b>Coffee</b><small>at most 2 a day</small></span><span class="slip">over the limit</span></div>
@@ -181,24 +181,22 @@
 <article class="tile t-widgets mint reveal" style="--d:.05s">
 <p class="kicker">Widgets</p>
 <p class="claim">On your Home Screen.</p>
-<p class="note">The year, this month, today and your habits.</p>
-<img class="bleed" src="img/widgets.webp" width="640" height="824" alt="Boop widgets: the year in dots and a week of habits." loading="lazy">
+<div class="homescreen" aria-hidden="true">
+<div class="w-small"><div class="w-head"><b>07</b><span>Oct</span><em>23%</em></div><div class="w-month"><i class="blank"></i><i class="blank"></i><i class="past"></i><i class="past"></i><i class="past"></i><i class="past"></i><i class="past"></i><i class="past"></i><i class="past"></i><i class="today"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><div class="w-foot">25 days left</div></div>
+<div class="w-medium"><div class="w-year" id="wyear"></div><div class="w-foot"><b>2026</b><span>86 days left</span></div></div>
+</div>
 </article>
 </div>
 </section>
 
-<section class="plus reveal" aria-labelledby="plus-title">
-<div>
+<section class="plus-bento" aria-labelledby="plus-title">
+<article class="tile t-plus reveal">
+<svg class="crown" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 18l-1-9.5 5 4 3.5-7 3.5 7 5-4-1 9.5z"/></svg>
+<p class="kicker">Boop Plus</p>
 <h2 id="plus-title">Free to use.<br>Plus for more.</h2>
-<p class="sub">The diary, the doodles, the habits and the inhabitants are free. Boop Plus is a subscription or a one-time purchase for the rest.</p>
-</div>
-<ul>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M8 12h8M12 8v8"/></svg>Widgets for your Home Screen</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></svg>A copy of your diary in your own iCloud</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12c0-2.8 1.9-4.5 4-4.5S12 9.2 12 12s1.9 4.5 4 4.5 4-1.7 4-4.5-1.9-4.5-4-4.5S12 9.2 12 12s-1.9 4.5-4 4.5S4 14.8 4 12z"/></svg>As many habits as you like</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17H6zM9 8h6M9 12h6M9 16h4"/></svg>Every kind of paper and two more fonts</li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 18l-1-9.5 5 4 3.5-7 3.5 7 5-4-1 9.5z"/></svg>One inhabitant who comes only with Plus</li>
-</ul>
+<p class="note">The diary, the doodles, the habits and the inhabitants are free. Plus adds the rest, as a subscription or one purchase for good.</p>
+</article>
+<article class="tile perk reveal" style="--d:0.00s"><svg class="perk-icon" viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#home"/></svg><p class="claim">Widgets</p><p class="note">for your Home Screen</p></article><article class="tile perk reveal" style="--d:0.05s"><svg class="perk-icon" viewBox="0 0 40 40" style="stroke:#4AA8F0" aria-hidden="true"><use href="img/doodles.svg#envelope"/></svg><p class="claim">iCloud copy</p><p class="note">of your diary, in your own iCloud</p></article><article class="tile perk reveal" style="--d:0.10s"><svg class="perk-icon" viewBox="0 0 40 40" style="stroke:#FF5E4D" aria-hidden="true"><use href="img/doodles.svg#run"/></svg><p class="claim">Habits</p><p class="note">as many as you like</p></article><article class="tile perk reveal" style="--d:0.15s"><svg class="perk-icon" viewBox="0 0 40 40" style="stroke:#8B6CF0" aria-hidden="true"><use href="img/doodles.svg#palette"/></svg><p class="claim">Papers & fonts</p><p class="note">every paper, two more fonts</p></article><article class="tile perk reveal" style="--d:0.20s"><svg class="perk-icon" viewBox="0 0 40 40" style="stroke:#F06FB3" aria-hidden="true"><use href="img/doodles.svg#mouse"/></svg><p class="claim">One inhabitant</p><p class="note">who comes only with Plus</p></article><article class="tile perk reveal" style="--d:0.25s"><svg class="perk-icon" viewBox="0 0 40 40" style="stroke:#FFA23A" aria-hidden="true"><use href="img/doodles.svg#gift"/></svg><p class="claim">Your way to pay</p><p class="note">weekly, monthly, yearly, or once for good</p></article>
 </section>
 
 <section class="closing">
