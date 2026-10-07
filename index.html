@@ -17,6 +17,16 @@
 <script src="app.js" defer></script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<!-- A die-cut sticker, as the app cuts its doodles: the lines grown and shrunk back, which fills what they enclose, in white with a soft shadow under it. -->
+<filter id="sticker" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+<feMorphology in="SourceAlpha" operator="dilate" radius="9" result="grown"/>
+<feMorphology in="grown" operator="erode" radius="5" result="cut"/>
+<feFlood flood-color="#FFFFFF"/><feComposite in2="cut" operator="in" result="backing"/>
+<feGaussianBlur in="cut" stdDeviation="2.2" result="blur"/><feOffset in="blur" dy="2.5" result="drop"/>
+<feFlood flood-color="#17181D" flood-opacity="0.22"/><feComposite in2="drop" operator="in" result="shadow"/>
+<feMerge><feMergeNode in="shadow"/><feMergeNode in="backing"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter></defs></svg>
 <div class="hero-band">
 <div class="wrap">
 <header class="top">
@@ -33,7 +43,7 @@
 <span class="store" role="img" aria-label="Download on the App Store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.07 10.63c-.02-2.33 1.9-3.45 1.99-3.51-1.08-1.58-2.77-1.8-3.37-1.82-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.05-.8-1.57.03-3.02.92-3.83 2.33-1.63 2.83-.42 7.02 1.17 9.32.78 1.12 1.71 2.38 2.93 2.34 1.18-.05 1.62-.76 3.05-.76 1.42 0 1.82.76 3.06.74 1.27-.03 2.07-1.14 2.84-2.27.9-1.31 1.27-2.58 1.29-2.64-.03-.01-2.47-.95-2.49-3.77zM11.77 3.79c.65-.79 1.09-1.88.97-2.97-.94.04-2.07.62-2.74 1.41-.6.7-1.13 1.81-.99 2.88 1.05.08 2.11-.53 2.76-1.32z"/></svg><span class="store-text"><small>Download on the</small><b>App Store</b></span></span>
 <small>Free · In-app purchases · Coming soon</small>
 </div>
-<div class="facts"><span>200+ hand-drawn doodles</span><span>15 inhabitants to meet</span><span>No account</span><span>Light &amp; dark</span></div>
+<ul class="tags"><li><svg viewBox="0 0 40 40" style="stroke:#FFA23A" aria-hidden="true"><use href="img/doodles.svg#star"/></svg>200+ hand-drawn doodles</li><li><svg viewBox="0 0 40 40" style="stroke:#8B6CF0" aria-hidden="true"><use href="img/doodles.svg#mouse"/></svg>15 inhabitants to meet</li><li><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#home"/></svg>Home Screen widgets</li><li><svg viewBox="0 0 40 40" style="stroke:#4AA8F0" aria-hidden="true"><use href="img/doodles.svg#key"/></svg>No account, no ads</li></ul>
 </div>
 <div class="scene">
 <div class="phone"><div class="screen"><div class="bar"><b>9:41</b><svg viewBox="0 0 52 12" aria-hidden="true"><g fill="#111"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M26 3.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 26 1.6c-2.6 0-5 1-6.8 2.7l1.1 1.1A8 8 0 0 1 26 3.2zm0 3.2c1.3 0 2.5.5 3.4 1.3l1.1-1.1A6.4 6.4 0 0 0 26 4.8c-1.7 0-3.3.7-4.5 1.8l1.1 1.1c.9-.8 2.1-1.3 3.4-1.3zm0 3.2c-.5 0-.9.2-1.2.5L26 11.3l1.2-1.2c-.3-.3-.7-.5-1.2-.5z"/><rect x="36.5" y="1.5" width="13" height="9" rx="2.5" fill="none" stroke="#111" stroke-opacity=".45"/><rect x="38" y="3" width="10" height="6" rx="1.3"/><rect x="50.3" y="4.3" width="1.4" height="3.4" rx=".7" fill-opacity=".45"/></g></svg></div><img src="img/s_year.webp" width="660" height="1434" alt="The year in Boop: a grid of colored doodles, one for every day so far." loading="eager"></div></div>
@@ -51,6 +61,12 @@
 
 <main>
 <div class="wrap">
+<section class="section center" id="everything">
+<h2 class="reveal">Everything in Boop.</h2>
+<p class="sub reveal">A diary, a habit tracker and a sketchbook in one app, and a few things nobody else has.</p>
+<ul class="tags cloud reveal"><li><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#leaf"/></svg>Your year on one page</li><li><svg viewBox="0 0 40 40" style="stroke:#FFA23A" aria-hidden="true"><use href="img/doodles.svg#star"/></svg>A doodle a day, 200+ to pick from</li><li><svg viewBox="0 0 40 40" style="stroke:#F06FB3" aria-hidden="true"><use href="img/doodles.svg#flower"/></svg>A mood for every day</li><li><svg viewBox="0 0 40 40" style="stroke:#2B3AC9" aria-hidden="true"><use href="img/doodles.svg#pencil"/></svg>Notes on dotted, lined, squared or plain paper</li><li><svg viewBox="0 0 40 40" style="stroke:#4AA8F0" aria-hidden="true"><use href="img/doodles.svg#camera"/></svg>Photos in a pile</li><li><svg viewBox="0 0 40 40" style="stroke:#B07A4F" aria-hidden="true"><use href="img/doodles.svg#deer"/></svg>Sketches traced over photos</li><li><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#run"/></svg>Habits with a tick, a count, minutes or a checklist</li><li><svg viewBox="0 0 40 40" style="stroke:#8B6CF0" aria-hidden="true"><use href="img/doodles.svg#hourglass"/></svg>On set weekdays, or N times a week or month</li><li><svg viewBox="0 0 40 40" style="stroke:#FF5E4D" aria-hidden="true"><use href="img/doodles.svg#coffee"/></svg>Bad habits with a limit</li><li><svg viewBox="0 0 40 40" style="stroke:#2FB5B0" aria-hidden="true"><use href="img/doodles.svg#book"/></svg>Year, month, day and habit views</li><li><svg viewBox="0 0 40 40" style="stroke:#8B6CF0" aria-hidden="true"><use href="img/doodles.svg#mouse"/></svg>15 inhabitants of the margins</li><li><svg viewBox="0 0 40 40" style="stroke:#F06FB3" aria-hidden="true"><use href="img/doodles.svg#gift"/></svg>App icons they bring</li><li><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#home"/></svg>Widgets for the Home Screen</li><li><svg viewBox="0 0 40 40" style="stroke:#FFA23A" aria-hidden="true"><use href="img/doodles.svg#alarm"/></svg>A daily reminder</li><li><svg viewBox="0 0 40 40" style="stroke:#4AA8F0" aria-hidden="true"><use href="img/doodles.svg#envelope"/></svg>A copy in your own iCloud</li><li><svg viewBox="0 0 40 40" style="stroke:#E7B92F" aria-hidden="true"><use href="img/doodles.svg#bells"/></svg>Backup to a file and back</li><li><svg viewBox="0 0 40 40" style="stroke:#FF5E4D" aria-hidden="true"><use href="img/doodles.svg#palette"/></svg>Your own colors, three fonts, four papers</li><li><svg viewBox="0 0 40 40" style="stroke:#2B3AC9" aria-hidden="true"><use href="img/doodles.svg#moon"/></svg>Light & dark</li><li><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#key"/></svg>No account, no ads</li><li><svg viewBox="0 0 40 40" style="stroke:#2FB5B0" aria-hidden="true"><use href="img/doodles.svg#water"/></svg>English & Russian</li></ul>
+</section>
+
 <section class="section center" id="film">
 <h2 class="reveal">Boop in 25 seconds.</h2>
 <p class="sub reveal">The App Store preview: a year, a day, a sketch over a photo and a month of habits.</p>
