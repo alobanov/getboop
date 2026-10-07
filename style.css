@@ -17,6 +17,8 @@
   --shadow-sm: 0 1px 2px rgba(23, 24, 29, 0.06), 0 10px 28px -14px rgba(23, 24, 29, 0.22);
   --font: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
   --mono: "Geist Mono", ui-monospace, monospace;
+  /* The app's pen, for headings and big figures; the rest stays in the sans. */
+  --pen: "Pangolin", "Geist", sans-serif;
   color-scheme: light;
 }
 
@@ -318,3 +320,13 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
   .float, .ribbon .track { animation: none; }
   .hl path { animation: none; stroke-dashoffset: 0; }
 }
+
+/* Headings, claims and big figures written with the app's pen. */
+h1, h2, h3, .claim:not(.small), .huge, .feature .num, .stop b, .tags li, .chip { font-family: var(--pen); font-weight: 400; letter-spacing: -0.01em; }
+h1 { line-height: 1.02; }
+h2 { line-height: 1.06; }
+.feature .num { -webkit-text-stroke-width: 1.4px; }
+.huge { letter-spacing: -0.03em; }
+/* The pen has one weight: a hairline of its own ink gives the large lines their body. */
+h1, h2, .claim:not(.small), .huge { -webkit-text-stroke: 0.035em currentColor; paint-order: stroke fill; }
+.grad-warm, .grad-cool { -webkit-text-stroke: 0; }
