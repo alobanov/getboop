@@ -30,8 +30,8 @@
     const start = new Date(now.getFullYear(), 0, 1);
     const length = new Date(now.getFullYear(), 1, 29).getDate() === 29 ? 366 : 365;
     const today = Math.floor((now - start) / 864e5);
-    document.getElementById('year-now').textContent = now.getFullYear();
-    document.getElementById('left').textContent = `${length - today} days left`;
+    document.getElementById('year-now').textContent = `in ${now.getFullYear()}`;
+    document.getElementById('left').textContent = `${length - today}`;
     let seed = 11;
     const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
     const cells = [];
