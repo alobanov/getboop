@@ -4,104 +4,165 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Boop: a diary that draws your year</title>
-<meta name="description" content="Boop is a diary for iPhone. Write a few lines, add a photo or a sketch, check off your habits, and every day becomes a small drawing on one page of your year.">
+<meta name="description" content="Boop is a diary for iPhone. Write a few lines, add a photo or a sketch, tick off your habits, and every day becomes a small drawing on one page of your year.">
 <link rel="canonical" href="https://alobanov.github.io/getboop/">
 <meta property="og:title" content="Boop: a diary that draws your year">
-<meta property="og:description" content="Boop is a diary for iPhone. Write a few lines, add a photo or a sketch, check off your habits, and every day becomes a small drawing on one page of your year.">
-<meta property="og:image" content="https://alobanov.github.io/getboop/img/year-canvas.jpg">
+<meta property="og:description" content="Boop is a diary for iPhone. Write a few lines, add a photo or a sketch, tick off your habits, and every day becomes a small drawing on one page of your year.">
+<meta property="og:image" content="https://alobanov.github.io/getboop/img/header-poster.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
 </head>
 <body>
+<div class="hero-band">
 <div class="wrap">
 <header class="top">
 <a class="brand" href=""><span class="mark" aria-hidden="true"><svg viewBox="4 1 35 38"><g class="char"><path d="M14.5 3.3L15.2 3.6L16 3.9L16.7 3.9L17.5 3.8L18.2 3.8L19 4L19.7 4.1L20.5 4.1L21.2 3.8L22 3.6L22.7 3.6L23.5 3.7L24.2 3.7L25 3.4L25.7 3.2L26.5 3.2L27.2 3.4L28 3.6L28.7 3.6L29.5 3.8L30.1 4.4L30.4 5.1L30.4 5.9L30.6 6.5L30.7 7.2L30.8 8L30.7 8.7L30.5 9.5L30.6 10.2L30.9 11L31.1 11.7L31.2 12.5L31.1 13.2L31.1 14L31.3 14.7L31.5 15.5L31.4 16.2L31.1 17L31 17.7L31 18.5L31.1 19.2L31 20L30.7 20.7L30.5 21.5L30.5 22.2L30.7 23L30.8 23.7L30.7 24.5L30.7 25.2L30.8 26L31.1 26.7L31.3 27.5L31.2 28.3L30.8 29L30.4 29.7L29.9 30.4L29.2 30.9L28.4 30.9L27.6 30.7L26.8 30.5L26.1 30.5L25.3 30.6L24.6 30.5L23.8 30.3L23.1 30.2L22.3 30.3L21.6 30.5L20.8 30.6L20.1 30.6L19.3 30.5L18.6 30.6L17.8 30.9L17.1 31.1L16.3 31L15.6 30.9L14.8 30.8L14 30.9L13.2 30.9L12.5 30.5L12.1 29.8L11.7 29.2L11.4 28.6L11.2 27.9L11.2 27.2L11.3 26.4L11.4 25.7L11.3 24.9L11 24.2L10.9 23.4L10.9 22.7L11 21.9L10.8 21.2L10.6 20.4L10.5 19.7L10.6 18.9L10.8 18.2L10.9 17.4L10.8 16.7L10.8 15.9L10.9 15.2L11.2 14.4L11.4 13.7L11.3 12.9L11.2 12.2L11.2 11.4L11.3 10.7L11.3 9.9L11.2 9.2L10.9 8.4L10.7 7.7L10.8 6.9L10.9 6.2L11.1 5.4L11.3 4.6L11.9 3.9L12.7 3.6L13.5 3.7L14.3 3.7L14.5 3.7L15.2 3.6M13.3 9L12.6 8.8L11.8 8.7L11 8.7L10.3 8.7L9.5 8.8L8.8 9.2L8.5 9.9L8.8 10.7L9 11M13 13.9L12.3 13.8L11.6 13.5L10.9 13.2L10.1 13L9.3 13L8.5 13.5L8.2 14.3L8.4 15.1L8.5 15.5M13.1 19L12.4 18.6L11.7 18.4L10.9 18.4L10.1 18.5L9.4 18.7L8.7 19L8.5 19.8L8.7 20.5L9 20.8M12.8 24L12.1 23.9L11.4 23.8L10.6 23.7L9.9 23.7L9.2 23.6L8.4 23.8L7.9 24.5L7.9 25.4L8.1 25.7M16.4 26.6L17.1 26.7L17.9 26.8L18.6 26.7L19.4 26.6L20.1 26.5L20.9 26.5L21.6 26.6L22.4 26.8L23.1 27L23.9 27L24.6 27L25.4 26.9L25.9 26.9"/><path d="M15.9 14.5L16.3 13.9L16.6 13.2L17 12.5L17.5 12.1L18 12.7L18.6 13.2L19.2 13.7L19.5 14.2M23.4 14.4L23.9 13.9L24.3 13.3L24.7 12.6L25 12.1L25.4 12.7L25.8 13.3L26.2 13.9L26.6 14.4M17.5 17.9L18.1 18.4L18.6 18.9L19.1 19.5L19.6 20.1L20.3 20.6L21.1 20.7L21.9 20.7L22.6 20.5L23.4 20.3L24.1 20.1L24.7 19.6L25.3 19.1L25.7 18.4L26 17.9M31.3 18.3L31.7 17.6L32.2 17.1L32.7 16.5L33.3 16L33.7 15.4L34.2 14.8L34.7 14.2L35.2 13.7L35.9 13.3L36.5 13M34.1 11.4L34.7 11.8L35.4 12.2L36 12.4L35.9 13L35.8 13.8L35.8 14.3M11 20.9L10.4 21.3L9.9 21.8L9.4 22.5L8.9 23L8.3 23.5L7.6 23.8L6.9 24.2L6.4 24.7L6.1 24.9M16.8 31.3L16.8 32L16.9 32.8L17 33.5L17 34.3L17 35L16.8 35.8L16.4 36.2L15.7 36L14.9 35.9L14.2 35.9L14.2 36.3M25 30.8L25.1 31.6L25.1 32.3L25.1 33.1L25 33.8L25 34.6L25.2 35.3L25.6 35.6L26.3 35.4L27 35.5L27.8 35.6L27.8 35.8"/></g></svg></span>Boop</a>
-<nav aria-label="Pages"><a class="link" href="support/">Support</a><a class="link" href="privacy/">Privacy</a><span class="store small" role="img" aria-label="Download on the App Store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.07 10.63c-.02-2.33 1.9-3.45 1.99-3.51-1.08-1.58-2.77-1.8-3.37-1.82-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.05-.8-1.57.03-3.02.92-3.83 2.33-1.63 2.83-.42 7.02 1.17 9.32.78 1.12 1.71 2.38 2.93 2.34 1.18-.05 1.62-.76 3.05-.76 1.42 0 1.82.76 3.06.74 1.27-.03 2.07-1.14 2.84-2.27.9-1.31 1.27-2.58 1.29-2.64-.03-.01-2.47-.95-2.49-3.77zM11.77 3.79c.65-.79 1.09-1.88.97-2.97-.94.04-2.07.62-2.74 1.41-.6.7-1.13 1.81-.99 2.88 1.05.08 2.11-.53 2.76-1.32z"/></svg><span class="store-text"><small>Download on the</small><b>App Store</b></span></span></nav>
+<nav aria-label="Pages"><a class="link" href="#film">Watch</a><a class="link" href="support/">Support</a><a class="link" href="privacy/">Privacy</a><span class="store small" role="img" aria-label="Download on the App Store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.07 10.63c-.02-2.33 1.9-3.45 1.99-3.51-1.08-1.58-2.77-1.8-3.37-1.82-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.05-.8-1.57.03-3.02.92-3.83 2.33-1.63 2.83-.42 7.02 1.17 9.32.78 1.12 1.71 2.38 2.93 2.34 1.18-.05 1.62-.76 3.05-.76 1.42 0 1.82.76 3.06.74 1.27-.03 2.07-1.14 2.84-2.27.9-1.31 1.27-2.58 1.29-2.64-.03-.01-2.47-.95-2.49-3.77zM11.77 3.79c.65-.79 1.09-1.88.97-2.97-.94.04-2.07.62-2.74 1.41-.6.7-1.13 1.81-.99 2.88 1.05.08 2.11-.53 2.76-1.32z"/></svg><span class="store-text"><small>Download on the</small><b>App Store</b></span></span></nav>
 </header>
-<main>
 <section class="hero">
-<h1>Your year,<br>one doodle a day.</h1>
-<p class="sub">Boop is a diary for iPhone. Write a few lines, add a photo or a sketch, check off your habits, and every day becomes a small drawing on one page of your year.</p>
+<div>
+<span class="pill"><i></i>Diary &amp; habits for iPhone</span>
+<h1>Your year,<br><span class="hl">one doodle a day.<svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 7 C 25 2, 55 3, 98 5"/></svg></span></h1>
+<p class="sub">Boop is a diary for iPhone. Write a few lines, add a photo or a sketch, tick off your habits, and every day becomes a small drawing on one page of your year.</p>
 <div class="cta">
-<!-- On release day this becomes a link to https://apps.apple.com/app/id6818434144. -->
+<!-- On release day the badge becomes a link to https://apps.apple.com/app/id6818434144. -->
 <span class="store" role="img" aria-label="Download on the App Store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.07 10.63c-.02-2.33 1.9-3.45 1.99-3.51-1.08-1.58-2.77-1.8-3.37-1.82-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.05-.8-1.57.03-3.02.92-3.83 2.33-1.63 2.83-.42 7.02 1.17 9.32.78 1.12 1.71 2.38 2.93 2.34 1.18-.05 1.62-.76 3.05-.76 1.42 0 1.82.76 3.06.74 1.27-.03 2.07-1.14 2.84-2.27.9-1.31 1.27-2.58 1.29-2.64-.03-.01-2.47-.95-2.49-3.77zM11.77 3.79c.65-.79 1.09-1.88.97-2.97-.94.04-2.07.62-2.74 1.41-.6.7-1.13 1.81-.99 2.88 1.05.08 2.11-.53 2.76-1.32z"/></svg><span class="store-text"><small>Download on the</small><b>App Store</b></span></span>
-<small>Free on iPhone. Coming soon.</small>
+<small>Free · coming soon</small>
 </div>
-<div class="stage">
-<div class="device left"><div class="screen"><img src="img/s_day.webp" width="660" height="1434" alt="A day in Boop: a few lines, a sketch and a pile of photos on squared paper." loading="eager"></div></div>
-<div class="device center"><div class="screen"><img src="img/s_year.webp" width="660" height="1434" alt="The year in Boop: a grid of colored doodles, one for every day so far." loading="eager"></div></div>
-<div class="device right"><div class="screen"><img src="img/s_character.webp" width="660" height="1434" alt="Sumiko, an inhabitant of the margins, on her page of field notes." loading="eager"></div></div>
+<div class="facts"><span>200+ hand-drawn doodles</span><span>15 inhabitants to meet</span><span>No account</span><span>Light &amp; dark</span></div>
+</div>
+<div class="scene">
+<div class="phone"><div class="screen"><div class="bar"><b>9:41</b><svg viewBox="0 0 52 12" aria-hidden="true"><g fill="#111"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M26 3.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 26 1.6c-2.6 0-5 1-6.8 2.7l1.1 1.1A8 8 0 0 1 26 3.2zm0 3.2c1.3 0 2.5.5 3.4 1.3l1.1-1.1A6.4 6.4 0 0 0 26 4.8c-1.7 0-3.3.7-4.5 1.8l1.1 1.1c.9-.8 2.1-1.3 3.4-1.3zm0 3.2c-.5 0-.9.2-1.2.5L26 11.3l1.2-1.2c-.3-.3-.7-.5-1.2-.5z"/><rect x="36.5" y="1.5" width="13" height="9" rx="2.5" fill="none" stroke="#111" stroke-opacity=".45"/><rect x="38" y="3" width="10" height="6" rx="1.3"/><rect x="50.3" y="4.3" width="1.4" height="3.4" rx=".7" fill-opacity=".45"/></g></svg></div><img src="img/s_year.webp" width="660" height="1434" alt="The year in Boop: a grid of colored doodles, one for every day so far." loading="eager"></div></div>
+<div class="float chip" style="top:9%;left:2%;--r:-4deg" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#run"/></svg>Ran 5 km</div>
+<div class="float chip" style="top:30%;right:0;--r:3deg;animation-delay:-2s" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#4AA8F0" aria-hidden="true"><use href="img/doodles.svg#water"/></svg>Water · 6/8</div>
+<div class="float chip" style="bottom:22%;left:0;--r:2deg;animation-delay:-4s" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#F06FB3" aria-hidden="true"><use href="img/doodles.svg#book"/></svg>Read 30 min</div>
+<svg class="float doodle" viewBox="0 0 40 40" style="stroke:#FFA23A;top:2%;right:14%;--r:12deg;animation-delay:-1s" aria-hidden="true"><use href="img/doodles.svg#d5"/></svg>
+<svg class="float doodle" viewBox="0 0 40 40" style="stroke:#8B6CF0;bottom:6%;right:8%;--r:-10deg;animation-delay:-3s" aria-hidden="true"><use href="img/doodles.svg#d96"/></svg>
+<img class="float peek" src="img/walk/ninja_0.svg" alt="" aria-hidden="true" style="bottom:2%;left:12%;--r:-6deg;animation-delay:-5s">
+</div>
+</section>
+</div>
+</div>
+<div class="ribbon" aria-hidden="true"><div class="track"><span>A doodle a day</span><span>Habits in color</span><span>Sketch over photos</span><span>Inhabitants of the margins</span><span>Widgets</span><span>No account, no ads</span><span>Light & dark</span><span>Your own iCloud copy</span><span>A doodle a day</span><span>Habits in color</span><span>Sketch over photos</span><span>Inhabitants of the margins</span><span>Widgets</span><span>No account, no ads</span><span>Light & dark</span><span>Your own iCloud copy</span></div></div>
+
+<main>
+<div class="wrap">
+<section class="section center" id="film">
+<h2 class="reveal">Boop in 25 seconds.</h2>
+<p class="sub reveal">The App Store preview: a year, a day, a sketch over a photo and a month of habits.</p>
+<div class="film">
+<ul class="beats left reveal"><li><b>A year on one page</b><span>Every day you write is a doodle in its habit&#8217;s color.</span></li><li><b>A day on paper</b><span>A few lines, a mood, a pile of photos.</span></li></ul>
+<div class="phone reveal"><div class="screen"><video src="img/day.mp4" poster="img/day-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="The App Store preview of Boop."></video></div></div>
+<ul class="beats right reveal"><li><b>Sketch over a photo</b><span>Trace it, and keep the drawing.</span></li><li><b>Habits, month by month</b><span>Counts, minutes and ticks at a glance.</span></li></ul>
 </div>
 </section>
 
 <section class="feature">
 <div class="reveal">
+<span class="num" aria-hidden="true">01</span>
 <h2>A page for every day.</h2>
-<p class="sub">Write what happened, pick a mood, drop in photos and trace a sketch over any of them. Boop draws the day a doodle of its own.</p>
-<ul class="points">
-<li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Notes on dotted, lined, squared or plain paper</span></li>
-<li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Photos in a pile and sketches drawn right over them</span></li>
-<li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Over two hundred doodles, and you can swap the day&#8217;s</span></li>
-</ul>
+<p class="sub">Write what happened, pick a mood, drop in photos. Boop gives the day a doodle of its own, and you can swap it for any of two hundred others.</p>
+<ul class="ticks"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Dotted, lined, squared or plain paper</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Photos in a pile, sketches beside the words</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>A mood for the day, in its own color</span></li></ul>
 </div>
-<figure class="visual reveal">
-<svg class="accent" viewBox="0 0 40 40" style="stroke:#4AA8F0;top:9%;left:10%;transform:rotate(-12deg)" aria-hidden="true"><use href="img/doodles.svg#d12"/></svg>
-<svg class="accent" viewBox="0 0 40 40" style="stroke:#F06FB3;bottom:12%;right:9%;transform:rotate(10deg)" aria-hidden="true"><use href="img/doodles.svg#d57"/></svg>
-<div class="device "><div class="screen"><img src="img/s_sketch.webp" width="660" height="1434" alt="Tracing a sketch over a photo of a deer in Boop." loading="lazy"></div></div>
-</figure>
+<div class="scene reveal">
+<div class="phone"><div class="screen"><div class="bar"><b>9:41</b><svg viewBox="0 0 52 12" aria-hidden="true"><g fill="#111"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M26 3.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 26 1.6c-2.6 0-5 1-6.8 2.7l1.1 1.1A8 8 0 0 1 26 3.2zm0 3.2c1.3 0 2.5.5 3.4 1.3l1.1-1.1A6.4 6.4 0 0 0 26 4.8c-1.7 0-3.3.7-4.5 1.8l1.1 1.1c.9-.8 2.1-1.3 3.4-1.3zm0 3.2c-.5 0-.9.2-1.2.5L26 11.3l1.2-1.2c-.3-.3-.7-.5-1.2-.5z"/><rect x="36.5" y="1.5" width="13" height="9" rx="2.5" fill="none" stroke="#111" stroke-opacity=".45"/><rect x="38" y="3" width="10" height="6" rx="1.3"/><rect x="50.3" y="4.3" width="1.4" height="3.4" rx=".7" fill-opacity=".45"/></g></svg></div><img src="img/s_day.webp" width="660" height="1434" alt="A day in Boop: a few lines, sketches and a pile of photos on squared paper." loading="lazy"></div></div>
+<div class="float chip" style="top:12%;right:4%;--r:4deg" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#F06FB3" aria-hidden="true"><use href="img/doodles.svg#pencil"/></svg>Sketch added</div>
+<div class="float chip" style="bottom:16%;left:4%;--r:-3deg;animation-delay:-3s" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#FFA23A" aria-hidden="true"><use href="img/doodles.svg#flower"/></svg>Mood: good</div>
+</div>
 </section>
 
-<section class="feature flip">
+<section class="feature flip blue">
 <div class="reveal">
+<span class="num" aria-hidden="true">02</span>
+<h2>Trace a photo, keep the sketch.</h2>
+<p class="sub">Open any photo of the day under the pen and draw over it. The photo goes, the drawing stays on the page.</p>
+<ul class="ticks"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>A pen, an eraser, undo and redo</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Up to six sketches a day</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Each sketch laid out beside the note, large or small</span></li></ul>
+</div>
+<div class="scene reveal">
+<div class="phone"><div class="screen"><div class="bar"><b>9:41</b><svg viewBox="0 0 52 12" aria-hidden="true"><g fill="#111"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M26 3.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 26 1.6c-2.6 0-5 1-6.8 2.7l1.1 1.1A8 8 0 0 1 26 3.2zm0 3.2c1.3 0 2.5.5 3.4 1.3l1.1-1.1A6.4 6.4 0 0 0 26 4.8c-1.7 0-3.3.7-4.5 1.8l1.1 1.1c.9-.8 2.1-1.3 3.4-1.3zm0 3.2c-.5 0-.9.2-1.2.5L26 11.3l1.2-1.2c-.3-.3-.7-.5-1.2-.5z"/><rect x="36.5" y="1.5" width="13" height="9" rx="2.5" fill="none" stroke="#111" stroke-opacity=".45"/><rect x="38" y="3" width="10" height="6" rx="1.3"/><rect x="50.3" y="4.3" width="1.4" height="3.4" rx=".7" fill-opacity=".45"/></g></svg></div><img src="img/s_sketch.webp" width="660" height="1434" alt="Tracing a sketch over a photo of a deer in Boop." loading="lazy"></div></div>
+<svg class="float doodle" viewBox="0 0 40 40" style="stroke:#4AA8F0;top:8%;left:12%;--r:-12deg" aria-hidden="true"><use href="img/doodles.svg#d12"/></svg>
+<div class="float chip" style="bottom:18%;right:2%;--r:3deg;animation-delay:-2s" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#8B6CF0" aria-hidden="true"><use href="img/doodles.svg#deer"/></svg>Traced over a photo</div>
+</div>
+</section>
+
+<section class="feature green">
+<div class="reveal">
+<span class="num" aria-hidden="true">03</span>
 <h2>Habits that color your days.</h2>
 <p class="sub">Give each habit a color. Do it, and the day&#8217;s doodle takes it on, so the year shows at a glance what you kept up.</p>
-<ul class="points">
-<li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Every day, on set weekdays, or a few times a week or month</span></li>
-<li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>A tick, a count, minutes or a checklist</span></li>
-<li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Bad habits get a limit, and going over it shows</span></li>
-</ul>
+<ul class="ticks"><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Every day, on set weekdays, or 3 times a month, whenever it suits</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>A tick, a count, minutes or a checklist</span></li><li><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10.5l3.8 3.8L16 6"/></svg><span>Bad habits get a limit, and going over it shows</span></li></ul>
 </div>
-<figure class="visual reveal">
-<svg class="accent" viewBox="0 0 40 40" style="stroke:#3FB27F;top:10%;right:11%;transform:rotate(9deg)" aria-hidden="true"><use href="img/doodles.svg#d33"/></svg>
-<svg class="accent" viewBox="0 0 40 40" style="stroke:#FFA23A;bottom:11%;left:9%;transform:rotate(-8deg)" aria-hidden="true"><use href="img/doodles.svg#d88"/></svg>
-<div class="device "><div class="screen"><img src="img/s_habits.webp" width="660" height="1434" alt="A month of habits in Boop: a row per day, a column per habit." loading="lazy"></div></div>
-</figure>
+<div class="scene reveal">
+<div class="phone"><div class="screen"><div class="bar"><b>9:41</b><svg viewBox="0 0 52 12" aria-hidden="true"><g fill="#111"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M26 3.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 26 1.6c-2.6 0-5 1-6.8 2.7l1.1 1.1A8 8 0 0 1 26 3.2zm0 3.2c1.3 0 2.5.5 3.4 1.3l1.1-1.1A6.4 6.4 0 0 0 26 4.8c-1.7 0-3.3.7-4.5 1.8l1.1 1.1c.9-.8 2.1-1.3 3.4-1.3zm0 3.2c-.5 0-.9.2-1.2.5L26 11.3l1.2-1.2c-.3-.3-.7-.5-1.2-.5z"/><rect x="36.5" y="1.5" width="13" height="9" rx="2.5" fill="none" stroke="#111" stroke-opacity=".45"/><rect x="38" y="3" width="10" height="6" rx="1.3"/><rect x="50.3" y="4.3" width="1.4" height="3.4" rx=".7" fill-opacity=".45"/></g></svg></div><img src="img/s_habits.webp" width="660" height="1434" alt="A month of habits in Boop: a row per day, a column per habit." loading="lazy"></div></div>
+<div class="float chip" style="top:14%;left:0;--r:-3deg" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#home"/></svg>Clean · 3/3 this month</div>
+<div class="float chip" style="bottom:14%;right:0;--r:3deg;animation-delay:-3s" aria-hidden="true"><svg viewBox="0 0 40 40" style="stroke:#FF5E4D" aria-hidden="true"><use href="img/doodles.svg#coffee"/></svg>Coffee · over the limit</div>
+</div>
+</section>
+</div>
+
+<section class="night">
+<div class="wrap">
+<div class="grid">
+<div class="reveal">
+<h2>Keep writing, and <span class="hl">someone moves in.<svg viewBox="0 0 100 10" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M2 7 C 25 2, 55 3, 98 5"/></svg></span></h2>
+<p class="sub" style="margin-top:18px">Write three days in a row and an ink-blot ninja turns up in the margins. A week, and a crossword who thinks he&#8217;s a doctor. Fifteen of them, each with a page of field notes, a walk along the bottom of your year and an app icon of their own. Nobody says who&#8217;s next.</p>
+<div class="dwellers">
+<div class="dweller"><img src="img/badge_ninja.svg" alt="">Sumiko</div>
+<div class="dweller"><img src="img/badge_crossword.svg" alt="">Quadratus</div>
+<div class="dweller"><span class="q" aria-hidden="true">?</span>3 days more</div>
+<div class="dweller"><span class="q" aria-hidden="true">?</span>who knows</div>
+</div>
+</div>
+<div class="phone" style="transform:rotate(3deg)"><div class="screen"><div class="bar"><b>9:41</b><svg viewBox="0 0 52 12" aria-hidden="true"><g fill="#111"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="4.5" y="6" width="3" height="6" rx="1"/><rect x="9" y="3.5" width="3" height="8.5" rx="1"/><rect x="13.5" y="1" width="3" height="11" rx="1"/><path d="M26 3.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 26 1.6c-2.6 0-5 1-6.8 2.7l1.1 1.1A8 8 0 0 1 26 3.2zm0 3.2c1.3 0 2.5.5 3.4 1.3l1.1-1.1A6.4 6.4 0 0 0 26 4.8c-1.7 0-3.3.7-4.5 1.8l1.1 1.1c.9-.8 2.1-1.3 3.4-1.3zm0 3.2c-.5 0-.9.2-1.2.5L26 11.3l1.2-1.2c-.3-.3-.7-.5-1.2-.5z"/><rect x="36.5" y="1.5" width="13" height="9" rx="2.5" fill="none" stroke="#111" stroke-opacity=".45"/><rect x="38" y="3" width="10" height="6" rx="1.3"/><rect x="50.3" y="4.3" width="1.4" height="3.4" rx=".7" fill-opacity=".45"/></g></svg></div><img src="img/s_character.webp" width="660" height="1434" alt="Sumiko, an inhabitant of the margins, on her page of field notes." loading="lazy"></div></div>
+</div>
+<div class="walkway" id="walkway" aria-hidden="true">
+<img class="walker" data-who="crossword" src="img/walk/crossword_0.svg" alt="">
+<img class="walker" data-who="ninja" src="img/walk/ninja_0.svg" alt="">
+</div>
+</div>
 </section>
 
-<section class="more">
-<h2 class="reveal">And a few things you won&#8217;t find in other diaries.</h2>
-<div class="bento">
-<article class="tile wide reveal">
-<h3>Keep going, and someone moves in.</h3>
-<p>Write three days in a row and an ink-blot ninja turns up in the margins. Others follow, each with a page of field notes and an app icon of their own. Nobody says who&#8217;s next.</p>
-<div class="badges"><img class="ink-art" src="img/badge_ninja.svg" alt="" loading="lazy"><img class="ink-art" src="img/badge_crossword.svg" alt="" loading="lazy"><span aria-hidden="true">?</span><span aria-hidden="true">?</span><span aria-hidden="true">?</span></div>
+<div class="wrap">
+<section class="section">
+<h2 class="reveal">The small things it does.</h2>
+<div class="live">
+<article class="card w4 reveal">
+<h3>Your year in dots</h3>
+<p>The widget on your Home Screen fills in as the year goes, a dot a day in its color.</p>
+<div class="dots" id="dots" aria-hidden="true"></div>
+<div class="dots-foot"><span id="year-now">2026</span><span id="left">days left</span></div>
 </article>
-<article class="tile narrow reveal">
-<h3>Inhabitants to meet</h3>
+<article class="card w2 reveal" style="--d:.1s">
+<h3>Inhabitants</h3>
 <p>Each for something you did.</p>
-<div class="big">15</div>
+<div class="big" id="count">15<small>to meet</small></div>
 </article>
-<article class="tile half reveal">
-<h3>On your Home Screen.</h3>
-<p>The year in dots, this month, today&#8217;s photos and your habits for the week.</p>
-<div class="peek"><img class="widget" src="img/widgets.webp" width="640" height="824" alt="Boop widgets: the year in dots and a week of habits." loading="lazy"></div>
+<article class="card w3 reveal">
+<h3>Times a month, any days</h3>
+<p>Some habits don&#8217;t need a schedule, only a count.</p>
+<div class="habit" aria-hidden="true">
+<div class="habit-row" id="clean"><svg viewBox="0 0 40 40" style="stroke:#3FB27F" aria-hidden="true"><use href="img/doodles.svg#home"/></svg><span><b>Clean the flat</b><small>3 times a month</small></span><span class="count">0/3</span></div>
+<div class="habit-row"><svg viewBox="0 0 40 40" style="stroke:#B07A4F" aria-hidden="true"><use href="img/doodles.svg#coffee"/></svg><span><b>Coffee</b><small>at most 2 a day</small></span><span class="slip">over the limit</span></div>
+</div>
 </article>
-<article class="tile half reveal">
-<h3>Make it yours.</h3>
-<p>Light or dark, your own background and ink, three fonts and four kinds of paper.</p>
-<div class="peek"><div class="device "><div class="screen"><img src="img/s_appearance.webp" width="660" height="1434" alt="Boop's appearance settings: theme, background, ink, font and paper." loading="lazy"></div></div></div>
+<article class="card w3 reveal" style="--d:.1s">
+<h3>Make it yours</h3>
+<p>Light or dark, your own background and ink, three fonts, four kinds of paper.</p>
+<div class="shot"><img src="img/s_appearance.webp" width="660" height="1434" alt="Boop's appearance settings." loading="lazy"></div>
 </article>
-<article class="tile narrow reveal">
-<h3>No account.</h3>
-<p>Your diary stays on your phone, with a copy in your own iCloud if you want one.</p>
+<article class="card w4 reveal">
+<h3>On your Home Screen</h3>
+<p>The year in dots, this month, today&#8217;s photos and sketches, your habits for the week.</p>
+<div class="shot"><img src="img/widgets.webp" width="640" height="824" alt="Boop widgets: the year in dots and a week of habits." loading="lazy"></div>
 </article>
-<article class="tile wide reveal">
-<h3>Never what you write.</h3>
-<p>No ads. Boop sends anonymous usage statistics and crash reports to get better, never your entries or photos, and one switch in Settings turns that off. Read the <a href="privacy/">privacy policy</a>.</p>
+<article class="card w2 reveal" style="--d:.1s">
+<h3>Yours alone</h3>
+<p>No account, no ads. Boop never sends what you write, only anonymous statistics you can turn off. <a href="privacy/">Privacy policy</a></p>
+<div class="big">0<small>accounts to make</small></div>
 </article>
 </div>
 </section>
@@ -112,20 +173,23 @@
 <p class="sub">The diary, the doodles, the habits and the inhabitants are free. Boop Plus is a subscription or a one-time purchase for the rest.</p>
 </div>
 <ul>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M8 12h8M12 8v8"/></svg><span>Widgets for your Home Screen</span></li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></svg><span>A copy of your diary in your own iCloud</span></li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12c0-2.8 1.9-4.5 4-4.5S12 9.2 12 12s1.9 4.5 4 4.5 4-1.7 4-4.5-1.9-4.5-4-4.5S12 9.2 12 12s-1.9 4.5-4 4.5S4 14.8 4 12z"/></svg><span>As many habits as you like</span></li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17H6zM9 8h6M9 12h6M9 16h4"/></svg><span>Every kind of paper and two more fonts</span></li>
-<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 18l-1-9.5 5 4 3.5-7 3.5 7 5-4-1 9.5z"/></svg><span>One inhabitant who comes only with Plus</span></li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="4.5"/><path d="M8 12h8M12 8v8"/></svg>Widgets for your Home Screen</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 18h10a4 4 0 0 0 .6-7.95A6 6 0 0 0 6.1 9.2 4.5 4.5 0 0 0 7 18z"/></svg>A copy of your diary in your own iCloud</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12c0-2.8 1.9-4.5 4-4.5S12 9.2 12 12s1.9 4.5 4 4.5 4-1.7 4-4.5-1.9-4.5-4-4.5S12 9.2 12 12s-1.9 4.5-4 4.5S4 14.8 4 12z"/></svg>As many habits as you like</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5h12v17H6zM9 8h6M9 12h6M9 16h4"/></svg>Every kind of paper and two more fonts</li>
+<li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.5 18l-1-9.5 5 4 3.5-7 3.5 7 5-4-1 9.5z"/></svg>One inhabitant who comes only with Plus</li>
 </ul>
 </section>
 
-<section class="closing reveal">
-<h2>Start your year&#8217;s page.</h2>
-<p class="sub">One line today is enough. The doodle takes care of the rest.</p>
-<span class="store" role="img" aria-label="Download on the App Store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.07 10.63c-.02-2.33 1.9-3.45 1.99-3.51-1.08-1.58-2.77-1.8-3.37-1.82-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.05-.8-1.57.03-3.02.92-3.83 2.33-1.63 2.83-.42 7.02 1.17 9.32.78 1.12 1.71 2.38 2.93 2.34 1.18-.05 1.62-.76 3.05-.76 1.42 0 1.82.76 3.06.74 1.27-.03 2.07-1.14 2.84-2.27.9-1.31 1.27-2.58 1.29-2.64-.03-.01-2.47-.95-2.49-3.77zM11.77 3.79c.65-.79 1.09-1.88.97-2.97-.94.04-2.07.62-2.74 1.41-.6.7-1.13 1.81-.99 2.88 1.05.08 2.11-.53 2.76-1.32z"/></svg><span class="store-text"><small>Download on the</small><b>App Store</b></span></span>
+<section class="closing">
+<h2 class="reveal">Start your year&#8217;s page.</h2>
+<p class="sub reveal">One line today is enough. The doodle takes care of the rest.</p>
+<div class="reveal"><span class="store" role="img" aria-label="Download on the App Store"><svg viewBox="0 0 17 20" aria-hidden="true"><path fill="currentColor" d="M14.07 10.63c-.02-2.33 1.9-3.45 1.99-3.51-1.08-1.58-2.77-1.8-3.37-1.82-1.43-.15-2.8.84-3.53.84-.73 0-1.85-.82-3.05-.8-1.57.03-3.02.92-3.83 2.33-1.63 2.83-.42 7.02 1.17 9.32.78 1.12 1.71 2.38 2.93 2.34 1.18-.05 1.62-.76 3.05-.76 1.42 0 1.82.76 3.06.74 1.27-.03 2.07-1.14 2.84-2.27.9-1.31 1.27-2.58 1.29-2.64-.03-.01-2.47-.95-2.49-3.77zM11.77 3.79c.65-.79 1.09-1.88.97-2.97-.94.04-2.07.62-2.74 1.41-.6.7-1.13 1.81-.99 2.88 1.05.08 2.11-.53 2.76-1.32z"/></svg><span class="store-text"><small>Download on the</small><b>App Store</b></span></span></div>
+<div class="banner reveal"><video src="img/header.mp4" poster="img/header-poster.jpg" muted loop playsinline autoplay preload="metadata" aria-label="Boop's doodles, with two inhabitants walking below."></video></div>
 </section>
+</div>
 </main>
+<div class="wrap">
 <footer class="foot">
 <span>Boop is made by Aleksei Lobanov.</span>
 <nav aria-label="Footer"><a href="support/">Support</a><a href="privacy/">Privacy policy</a><a href="mailto:katleta5000@gmail.com">Contact</a></nav>
