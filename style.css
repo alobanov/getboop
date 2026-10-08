@@ -44,7 +44,7 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-rad
 .topbar.scrolled { box-shadow: 0 1px 0 var(--line), 0 10px 24px -18px rgba(23, 24, 29, 0.35); }
 .top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
 section[id] { scroll-margin-top: 76px; }
-.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 400 1.6rem/1 var(--pen); letter-spacing: -0.01em; -webkit-text-stroke: 0.035em currentColor; paint-order: stroke fill; }
 .mark { width: 34px; height: 34px; border-radius: 9px; background: var(--sun); display: grid; place-items: center; flex: none; }
 .mark svg { width: 26px; height: 26px; }
 .char { fill: none; stroke: #17181D; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
@@ -53,9 +53,8 @@ section[id] { scroll-margin-top: 76px; }
 .top nav a:hover { color: var(--text); }
 @media (max-width: 860px) { .top nav .link { display: none; } }
 
-/* The App Store button, drawn after Apple's badge. No link until Boop is out; on release
-   day it links to https://apps.apple.com/app/id6818434144. */
-.store {
+/* The App Store button, drawn after Apple's badge, linking to Boop's page in the store. */
+.store { text-decoration: none;
   display: inline-flex; align-items: center; gap: 10px; height: 54px; padding: 0 20px 0 16px;
   border-radius: 13px; background: #000; color: #fff; white-space: nowrap; text-align: left;
 }
@@ -63,6 +62,23 @@ section[id] { scroll-margin-top: 76px; }
 .store-text { display: grid; line-height: 1.05; }
 .store-text small { font-size: 0.7rem; font-weight: 500; }
 .store-text b { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.025em; }
+/* Asking to be pressed: a light sweeping over it now and then, a lift and a tilt under the
+   pointer, a press when it is tapped. */
+.store { position: relative; overflow: hidden; box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 14px 26px -12px rgba(23, 24, 29, 0.55), 0 3px 6px -2px rgba(23, 24, 29, 0.3); cursor: pointer;
+  transition: transform 0.25s cubic-bezier(0.3, 1.6, 0.5, 1), box-shadow 0.25s ease; }
+.store::before { content: ""; position: absolute; top: 0; bottom: 0; left: -60%; width: 40%; background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.28), transparent); transform: skewX(-20deg); animation: glint 5s 1.2s ease-in-out infinite; pointer-events: none; }
+@keyframes glint { 0%, 70% { left: -60%; } 100% { left: 130%; } }
+.store:hover { transform: translateY(-3px) rotate(-1.5deg) scale(1.03); box-shadow: 0 1px 0 rgba(255, 255, 255, 0.12) inset, 0 22px 34px -14px rgba(23, 24, 29, 0.6), 0 6px 10px -4px rgba(23, 24, 29, 0.3); }
+.store:active { transform: translateY(1px) scale(0.98); transition-duration: 0.08s; }
+.store-text small { color: #fff; opacity: 0.9; }
+.store.small { box-shadow: 0 6px 14px -8px rgba(23, 24, 29, 0.5); }
+.store.small::before { animation-delay: 3.5s; }
+
+/* A note in the pen beside the badge, its arrow pointing back at it. */
+.hand-note { position: relative; margin: 0; padding-left: 52px; font: 400 1.45rem/1.1 var(--pen); color: var(--coral); transform: rotate(-3deg); }
+.hand-note small { display: block; margin-top: 4px; font: 500 0.88rem/1.35 var(--font); color: var(--muted); transform: rotate(3deg); transform-origin: left; }
+.hand-note svg { position: absolute; left: -2px; top: -6px; width: 50px; height: 34px; fill: none; stroke: var(--coral); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
 .store.small { height: 40px; padding: 0 13px 0 11px; border-radius: 10px; gap: 7px; }
 .store.small svg { width: 15px; height: 18px; }
 .store.small .store-text small { font-size: 0.55rem; }
@@ -90,7 +106,6 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .hero .sub { margin: 0; }
 .hero .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; }
 .hero .cta { margin-top: 28px; }
-.hero .cta small { color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
 .tags { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .tags li {
   display: inline-flex; align-items: center; gap: 9px; padding: 8px 16px 8px 9px;
@@ -121,22 +136,38 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .float.ninja { width: 118px; z-index: 4; filter: drop-shadow(3px 0 0 #fff) drop-shadow(-3px 0 0 #fff) drop-shadow(0 3px 0 #fff) drop-shadow(0 -3px 0 #fff) drop-shadow(0 8px 12px rgba(23, 24, 29, 0.25)); }
 @keyframes bob { 0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); } 50% { transform: translateY(-12px) rotate(var(--r, 0deg)); } }
 
-/* A thin iPhone: a slim dark band, the screen's corners, the Dynamic Island, and the
-   status bar over the app's paper. */
-.phone { position: relative; padding: 1.1%; border-radius: 13.6% / 6.3%; background: #1B1C22; box-shadow: var(--shadow), inset 0 0 0 1px #3B3C44; z-index: 2; }
-.screen { position: relative; aspect-ratio: 1320 / 2868; border-radius: 12.4% / 5.7%; overflow: hidden; background: #F7F5EF; }
+/* The iPhone is Apple's own bezel (Apple Design Resources, iPhone 18 Pro Max) laid over
+   the screen: its hole is 1320 x 2868 of 1470 x 3000, the size of the app's screenshots. */
+.phone { position: relative; aspect-ratio: 1470 / 3000; z-index: 2; filter: drop-shadow(0 30px 34px rgba(23, 24, 29, 0.28)) drop-shadow(0 8px 10px rgba(23, 24, 29, 0.14)); }
+.phone::after { content: ""; position: absolute; inset: 0; background: var(--bezel, url(img/bezel_black.webp)) center / 100% 100% no-repeat; pointer-events: none; z-index: 4; }
+/* The screen is cut by the bezel's own hole (its continuous corners, grown a little to
+   tuck under the frame), so no paper shows between the two. */
+.screen { position: absolute; left: 5.1%; top: 2.2%; width: 89.8%; height: 95.6%; overflow: hidden; background: #F7F5EF;
+  -webkit-mask: url(img/screen_mask.png) center / 100% 100% no-repeat; mask: url(img/screen_mask.png) center / 100% 100% no-repeat; }
 /* The app's screens keep the status bar's room empty at their top: the bar is laid over it. */
 .screen img, .screen video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
 .screen .bar { position: absolute; top: 0; left: 0; right: 0; height: 5.6%; display: flex; align-items: center; justify-content: space-between; padding: 0 9% 0 11%; font: 600 clamp(9px, 1vw, 13px)/1 var(--font); color: #111; z-index: 2; }
 .screen .bar b { font-weight: 600; }
 .screen .bar svg { height: 0.95em; width: auto; }
-.screen::after { content: ""; position: absolute; top: 1.3%; left: 50%; width: 30%; aspect-ratio: 3.5; transform: translateX(-50%); border-radius: 999px; background: #000; z-index: 3; }
 
-/* The ribbon */
-.ribbon { position: relative; z-index: 4; margin: -28px -2% 0; background: var(--sun); transform: rotate(-2deg); overflow: hidden; box-shadow: 0 10px 24px -14px rgba(0, 0, 0, 0.3); }
-.ribbon .track { display: flex; width: max-content; animation: run 38s linear infinite; }
-.ribbon span { display: flex; align-items: center; gap: 22px; padding: 14px 11px; font: 700 0.95rem/1 var(--mono); letter-spacing: 0.06em; text-transform: uppercase; white-space: nowrap; }
-.ribbon span::after { content: "✶"; color: var(--coral); }
+/* Notes in the pen around the page, each with its arrow, as if scribbled on the paper. */
+.scribble { position: absolute; z-index: 5; margin: 0; display: flex; align-items: flex-start; gap: 4px; font: 400 1.3rem/1.05 var(--pen); color: var(--coral); white-space: nowrap; transform: rotate(var(--r, 0deg)); pointer-events: none; }
+.scribble svg { flex: none; width: 46px; height: 31px; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.scribble.sun { color: var(--sun); }
+.scribble.ink { color: var(--ink); }
+.scribbled { position: relative; display: inline-block; }
+.streak-wrap { position: relative; padding-top: 44px; }
+.streak-wrap .streak { margin-top: 0; }
+.closing-cta { position: relative; display: inline-block; }
+@media (max-width: 899px) { .scribble.hide-sm, .scene .scribble, .scribbled .scribble, .closing-cta .scribble { display: none; } }
+
+/* The ribbon: a quiet line of what Boop does, drifting by between two hairlines, fading
+   out at both ends. */
+.ribbon { position: relative; z-index: 4; border-block: 1px solid var(--line); background: rgba(255, 255, 255, 0.55); overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.ribbon .track { display: flex; width: max-content; animation: run 60s linear infinite; }
+.ribbon span { display: flex; align-items: center; gap: 10px; padding: 16px 28px; font: 500 0.98rem/1 var(--font); letter-spacing: -0.01em; color: var(--muted); white-space: nowrap; }
+.ribbon svg { width: 24px; height: 24px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 @keyframes run { to { transform: translateX(-50%); } }
 
 /* Sections */
@@ -193,7 +224,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .night h2 .hl { color: var(--sun); }
 .night .hl path { stroke: var(--sun); }
 .character { position: relative; display: grid; place-items: center; }
-.character .phone { width: min(240px, 62vw); transform: rotate(3deg); box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7), inset 0 0 0 1px #3B3C44; }
+.character .phone { width: min(250px, 62vw); transform: rotate(3deg); filter: drop-shadow(0 34px 40px rgba(0, 0, 0, 0.55)); }
 .dark-chip { background: rgba(255, 255, 255, 0.96); color: var(--text); }
 
 /* The streak: a line from the first day, the stops on it, filled up to the last one met. */
@@ -209,8 +240,8 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .stop small { font-size: 0.72rem; color: #9EA3D6; }
 .met small { color: var(--sun); font-weight: 600; }
 
-.walkway { position: relative; height: 104px; margin-top: 8px; border-bottom: 2px solid rgba(255, 255, 255, 0.18); }
-.walker { position: absolute; bottom: -12px; width: 100px; height: 100px; filter: invert(1); will-change: transform; }
+.walkway { position: relative; height: 104px; margin: 8px 0 32px; border-bottom: 2px solid rgba(255, 255, 255, 0.18); }
+.walker { position: absolute; bottom: -7px; width: 100px; height: 100px; filter: invert(1); will-change: transform; }
 
 /* Bento, as Apple lays it: tiles of different sizes and colors on a tight grid, a small
    kicker, a large claim, and the picture running off the tile's edge. */
@@ -329,11 +360,18 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .page p { margin: 0 0 14px; }
 .page a { color: var(--ink); }
 
-/* Footer */
-.foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; padding: 28px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.92rem; }
-.foot nav { display: flex; gap: 22px; }
-.foot a { text-decoration: none; }
-.foot a:hover { color: var(--text); }
+/* Footer: no card of its own, just the paper under a hairline: a white band
+   across the page: a row of links with their doodles, and the signature under it. */
+.foot { position: relative; isolation: isolate; margin: 8px 0 0; padding: 26px 0 24px; color: var(--muted); }
+/* The band runs the page's width: white paper with the app's crumpled sheet over it. */
+.foot::before { content: ""; position: absolute; z-index: -1; top: 0; bottom: 0; left: -100vmax; right: -100vmax; background: url(img/paper_crumpled.webp) 0 0 / 384px 384px repeat, #FFFFFF; box-shadow: 0 -1px 0 var(--line); }
+.foot-main { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 28px; }
+.foot-col { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.foot-col a { display: inline-flex; align-items: center; gap: 7px; width: fit-content; text-decoration: none; font-size: 0.97rem; font-weight: 500; color: var(--text); transition: color 0.2s ease, transform 0.2s ease; }
+.foot-col a:hover { color: var(--text); transform: translateY(-2px); }
+.foot-col svg { width: 22px; height: 22px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+.heart { width: 1.05em; height: 1em; vertical-align: -0.15em; fill: var(--coral); stroke: var(--coral); stroke-width: 1.5; stroke-linejoin: round; transform: rotate(-8deg); }
+.foot-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(23, 24, 29, 0.1); font-size: 0.88rem; color: var(--muted); }
 
 /* Coming into view, one after another. Hidden only once [js] on <html> proves app.js is
    actually running (set by an inline script in <head>) — so a blocked or broken script
@@ -345,7 +383,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .js .reveal { opacity: 1; transform: none; transition: none; }
-  .float, .ribbon .track { animation: none; }
+  .float, .ribbon .track, .store::before { animation: none; }
   .hl path { animation: none; stroke-dashoffset: 0; }
 }
 
