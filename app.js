@@ -5,6 +5,15 @@
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const colours = ['#FF6B5E', '#FFA23A', '#E7B92F', '#8DBF3F', '#3FB27F', '#2FB5B0', '#4AA8F0', '#8B6CF0', '#F06FB3', '#B07A4F'];
+  // 365 in most years, 366 when Feb rolls over to the 29th instead of spilling into March.
+  const yearLength = (year) => (new Date(year, 1, 29).getDate() === 29 ? 366 : 365);
+  // How many days into [date]'s year we are, Jan 1st being day 0.
+  const dayOfYear = (date) => Math.floor((date - new Date(date.getFullYear(), 0, 1)) / 864e5);
+  // A tiny, seeded, repeatable "random": the same seed always draws the same days.
+  const lcg = (seed) => () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+  const now = new Date();
+  const today = dayOfYear(now);
+  const length = yearLength(now.getFullYear());
 
   // Calls [then] once [el] is well in view, or at once without an observer.
   const whenSeen = (el, then) => {
@@ -26,14 +35,9 @@
   // The year in dots: today's date, the days so far filling in one after another.
   const dots = document.getElementById('dots');
   if (dots) {
-    const now = new Date();
-    const start = new Date(now.getFullYear(), 0, 1);
-    const length = new Date(now.getFullYear(), 1, 29).getDate() === 29 ? 366 : 365;
-    const today = Math.floor((now - start) / 864e5);
     document.getElementById('year-now').textContent = `in ${now.getFullYear()}`;
     document.getElementById('left').textContent = `${length - today}`;
-    let seed = 11;
-    const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const random = lcg(11);
     const cells = [];
     for (let i = 0; i < length; i++) {
       const dot = document.createElement('i');
@@ -51,16 +55,16 @@
   // The year widget's dots: the days so far in their colors, the rest faint.
   const wyear = document.getElementById('wyear');
   if (wyear) {
-    const now = new Date();
-    const today = Math.floor((now - new Date(now.getFullYear(), 0, 1)) / 864e5);
-    let seed = 5;
-    const random = () => ((seed = (seed * 16807) % 2147483647) / 2147483647);
+    const random = lcg(5);
     const html = [];
-    for (let i = 0; i < 365; i++) {
+    for (let i = 0; i < length; i++) {
       const colour = i <= today && random() > 0.15 ? colours[Math.floor(random() * colours.length)] : '';
       html.push(colour ? `<i style="background:${colour}"></i>` : '<i></i>');
     }
     wyear.innerHTML = html.join('');
+    // The widget's own foot, kept in step with the dots above it instead of staying fixed.
+    document.getElementById('wyear-label').textContent = `${now.getFullYear()}`;
+    document.getElementById('wyear-left').textContent = `${length - today} days left`;
   }
 
   // A habit three times a month, counted up to done.
