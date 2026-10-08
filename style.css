@@ -39,15 +39,19 @@ a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; border-rad
 @media (min-width: 720px) { .wrap { padding: 0 40px; } }
 
 /* Nav */
-.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 72px; }
+/* The bar stays at the top while the page scrolls, frosted over what passes under it. */
+.topbar { position: sticky; top: 0; z-index: 50; background: rgba(255, 252, 244, 0.72); -webkit-backdrop-filter: saturate(1.6) blur(16px); backdrop-filter: saturate(1.6) blur(16px); transition: box-shadow 0.25s ease; }
+.topbar.scrolled { box-shadow: 0 1px 0 var(--line), 0 10px 24px -18px rgba(23, 24, 29, 0.35); }
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+section[id] { scroll-margin-top: 76px; }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 1.15rem; letter-spacing: -0.02em; }
 .mark { width: 34px; height: 34px; border-radius: 9px; background: var(--sun); display: grid; place-items: center; flex: none; }
 .mark svg { width: 26px; height: 26px; }
 .char { fill: none; stroke: #17181D; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
-.top nav { display: flex; align-items: center; gap: 26px; font-size: 0.95rem; color: var(--muted); }
+.top nav { display: flex; align-items: center; gap: 24px; font-size: 0.95rem; color: var(--muted); }
 .top nav a { text-decoration: none; }
 .top nav a:hover { color: var(--text); }
-@media (max-width: 600px) { .top nav .link { display: none; } }
+@media (max-width: 860px) { .top nav .link { display: none; } }
 
 /* The App Store button, drawn after Apple's badge. No link until Boop is out; on release
    day it links to https://apps.apple.com/app/id6818434144. */
@@ -80,12 +84,13 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 
 /* Hero */
 .hero-band { background: radial-gradient(120% 90% at 85% 10%, #FFE9A8 0%, rgba(255, 233, 168, 0) 60%), radial-gradient(80% 70% at 0% 100%, #E8EBFF 0%, rgba(232, 235, 255, 0) 60%); }
-.hero { display: grid; gap: 40px; align-items: center; padding: 28px 0 72px; }
-@media (min-width: 940px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; padding: 40px 0 88px; } }
-.hero h1 { margin: 20px 0 22px; }
-.hero .sub { margin: 0 0 28px; }
+.hero { display: grid; gap: 32px; align-items: center; padding: 20px 0 64px; }
+@media (min-width: 940px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; padding: 24px 0 72px; } }
+.hero h1 { margin: 18px 0 18px; }
+.hero .sub { margin: 0; }
 .hero .cta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 18px; }
-.hero .cta small { color: var(--muted); font-size: 0.9rem; }
+.hero .cta { margin-top: 28px; }
+.hero .cta small { color: var(--muted); font-size: 0.9rem; line-height: 1.4; }
 .tags { list-style: none; margin: 26px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
 .tags li {
   display: inline-flex; align-items: center; gap: 9px; padding: 8px 16px 8px 9px;
@@ -95,10 +100,17 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 }
 .tags li:hover { transform: translateY(-2px) rotate(-1deg); box-shadow: var(--shadow), inset 0 0 0 1px var(--line); }
 .tags svg { width: 26px; height: 26px; padding: 2px; border-radius: 50%; background: #F7F5EF; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.tags.cloud { justify-content: center; max-width: 980px; margin: 36px auto 0; gap: 12px; }
-.tags.cloud li { font-size: 1rem; padding: 10px 18px 10px 10px; }
+.tags.cloud { justify-content: center; max-width: 980px; margin: 28px auto 0; gap: 10px; }
+.tags.cloud li { font-size: 0.98rem; padding: 8px 16px 8px 9px; }
 .tags.cloud svg { width: 30px; height: 30px; }
 @media (max-width: 600px) { .tags li { white-space: normal; } }
+
+/* What Boop does, in three steps under the headline. */
+.steps { list-style: none; margin: 26px 0 0; padding: 0; display: grid; gap: 14px; max-width: 34em; }
+.steps li { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 14px; align-items: center; }
+.steps svg { width: 44px; height: 44px; padding: 4px; overflow: visible; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: url(#sticker); }
+.steps span { color: var(--muted); font-size: 0.98rem; line-height: 1.45; }
+.steps b { display: block; color: var(--text); font: 400 1.3rem/1.15 var(--pen); -webkit-text-stroke: 0.03em currentColor; }
 
 .scene { position: relative; display: grid; place-items: center; min-height: 560px; }
 .scene .phone { width: min(290px, 70vw); }
@@ -128,7 +140,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 @keyframes run { to { transform: translateX(-50%); } }
 
 /* Sections */
-.section { padding: 96px 0 0; }
+.section { padding: 72px 0 0; }
 .center { text-align: center; }
 .center .sub { margin: 16px auto 0; }
 
@@ -158,12 +170,25 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .ticks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
 .ticks svg { width: 20px; height: 20px; margin-top: 3px; fill: none; stroke: var(--coral); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
 
+/* How it works: three tiles, the words on top and the app's screen rising from the bottom. */
+.how-row { display: grid; gap: 16px; margin-top: 28px; }
+@media (min-width: 900px) { .how-row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.tile.how { min-height: 600px; padding-bottom: 0; }
+.tile.how h3 { font-size: 1.7rem; line-height: 1.1; -webkit-text-stroke: 0.035em currentColor; }
+.tile.how .ticks { margin-top: 14px; gap: 6px; font-size: 0.93rem; }
+.tile.how .phone.rise { position: absolute; left: 50%; top: 52%; width: 70%; transform: translateX(-50%) rotate(-3deg); }
+.tile.how:nth-child(2) .phone.rise { transform: translateX(-50%) rotate(2deg); }
+.tile.blue { background: #E9ECFF; }
+.tile.green { background: #E3F5EC; }
+@media (max-width: 899px) { .tile.how { min-height: 640px; } .tile.how .phone.rise { width: min(62%, 280px); top: 48%; } }
+
 /* Inhabitants, on a dark band: the words and a character's page, then the streak they
    come along, then two of them walking. */
-.night { margin-top: 96px; background: radial-gradient(70% 60% at 80% 20%, #2A2E6E 0%, rgba(42, 46, 110, 0) 70%), #14163A; color: #F1F2FF; padding: 64px 0 0; overflow: hidden; }
+.night { margin-top: 72px; background: radial-gradient(70% 60% at 80% 20%, #2A2E6E 0%, rgba(42, 46, 110, 0) 70%), #14163A; color: #F1F2FF; padding: 48px 0 0; overflow: hidden; }
 .night .sub { color: #B9BCE3; }
 .kicker.on-dark { color: #9EA3D6; margin-bottom: 12px; }
 .night .grid { display: grid; gap: 32px; align-items: center; }
+.night .grid > * { min-width: 0; }
 @media (min-width: 900px) { .night .grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: 64px; } }
 .night h2 .hl { color: var(--sun); }
 .night .hl path { stroke: var(--sun); }
@@ -189,14 +214,14 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 
 /* Bento, as Apple lays it: tiles of different sizes and colors on a tight grid, a small
    kicker, a large claim, and the picture running off the tile's edge. */
-.bento { display: grid; gap: 18px; margin-top: 40px; }
+.bento { display: grid; gap: 16px; margin-top: 28px; }
 @media (min-width: 900px) {
-  .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 290px; }
+  .bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 268px; }
   .t-year { grid-column: span 2; grid-row: span 2; }
   .t-look { grid-row: span 2; }
   .t-habits, .t-widgets { grid-column: span 2; }
 }
-.tile { position: relative; overflow: hidden; border-radius: 30px; background: var(--surface); padding: 28px 28px 26px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; min-height: 280px; isolation: isolate; }
+.tile { position: relative; overflow: hidden; border-radius: 30px; background: var(--surface); padding: 26px 26px 24px; box-shadow: var(--shadow-sm); display: flex; flex-direction: column; min-height: 240px; isolation: isolate; }
 .tile p { margin: 0; }
 .kicker { font-size: 0.95rem; font-weight: 600; color: var(--muted); }
 .claim { margin-top: 6px !important; font-size: clamp(1.5rem, 2.4vw, 2rem); font-weight: 800; letter-spacing: -0.035em; line-height: 1.08; }
@@ -213,12 +238,12 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .tile.lilac { background: #ECEBFF; }
 .tile.mint { background: #E1F5EA; }
 
-.t-year .dots { margin-top: 24px; display: grid; grid-template-columns: repeat(23, minmax(0, 1fr)); gap: 5px; }
+.t-year .dots { margin-top: 20px; display: grid; grid-template-columns: repeat(26, minmax(0, 1fr)); gap: 4px; }
 @media (max-width: 600px) { .t-year .dots { grid-template-columns: repeat(24, minmax(0, 1fr)); } }
 .t-year .dots i { aspect-ratio: 1; border-radius: 50%; background: rgba(255, 255, 255, 0.1); transform: scale(0.55); transition: background 0.3s, transform 0.3s, box-shadow 0.3s; }
 .t-year .dots i.on { transform: scale(1); }
 .t-year .dots i.today { outline: 2px solid #fff; outline-offset: 2px; }
-.t-year .huge { padding-top: 22px; }
+.t-year .huge { padding-top: 16px; }
 
 .t-count .huge { margin-top: 10px !important; }
 .t-count .claim.small { margin-top: 10px !important; max-width: 12em; }
@@ -270,9 +295,9 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 }
 
 /* Plus, as a bento too: a large tile saying what it is, and a tile for each thing it adds. */
-.plus-bento { display: grid; gap: 16px; margin-top: 104px; }
+.plus-bento { display: grid; gap: 16px; margin-top: 72px; }
 @media (min-width: 900px) {
-  .plus-bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 128px; }
+  .plus-bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 112px; }
   .t-plus { grid-column: span 2; grid-row: span 3; }
 }
 .t-plus { background: linear-gradient(140deg, #FFE7A1 0%, #FFC9A8 55%, #FFB3B8 100%); justify-content: flex-end; }
@@ -288,12 +313,12 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .perk-icon { width: 58px; height: 58px; padding: 5px; overflow: visible; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: url(#sticker); }
 
 /* Closing: a last tile with the app's icon, the call and the badge, doodles round it. */
-.closing { position: relative; margin: 104px 0 96px; padding: 88px 24px 80px; text-align: center; border-radius: 40px; overflow: hidden;
+.closing { position: relative; margin: 72px 0 64px; padding: 56px 24px 52px; text-align: center; border-radius: 40px; overflow: hidden;
   background: radial-gradient(90% 120% at 50% 0%, #FFF3CC 0%, #FFE39A 60%, #FFD27A 100%); box-shadow: var(--shadow-sm); }
 .closing h2 { font-size: clamp(2.4rem, 5.4vw, 4.2rem); }
 .closing .sub { margin: 16px auto 30px; color: #5A4A2C; }
-.app-icon { display: inline-grid; place-items: center; width: 108px; height: 108px; margin-bottom: 26px; border-radius: 26px; background: var(--sun); box-shadow: 0 0 0 6px #fff, var(--shadow); transform: rotate(-6deg); }
-.app-icon svg { width: 80px; height: 80px; }
+.app-icon { display: inline-grid; place-items: center; width: 92px; height: 92px; margin-bottom: 20px; border-radius: 26px; background: var(--sun); box-shadow: 0 0 0 6px #fff, var(--shadow); transform: rotate(-6deg); }
+.app-icon svg { width: 68px; height: 68px; }
 @media (max-width: 700px) { .closing .float { display: none; } }
 
 /* Text pages */

@@ -120,3 +120,12 @@
   };
   requestAnimationFrame(tick);
 })();
+
+// The top bar gets an edge once the page has scrolled under it.
+(() => {
+  const bar = document.getElementById('topbar');
+  if (!bar) return;
+  const mark = () => bar.classList.toggle('scrolled', scrollY > 8);
+  addEventListener('scroll', mark, { passive: true });
+  mark();
+})();
