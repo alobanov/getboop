@@ -13,11 +13,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;700&family=Pangolin&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=202610081057">
 <!-- .reveal only starts hidden once this proves script actually runs, so a blocked or
      failed app.js never leaves the page's content stuck invisible. -->
 <script>document.documentElement.classList.add('js');</script>
-<script src="app.js" defer></script>
+<script src="app.js?v=202610081057" defer></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -27,6 +27,15 @@
 <feMorphology in="grown" operator="erode" radius="14" result="cut"/>
 <feFlood flood-color="#FFFFFF"/><feComposite in2="cut" operator="in" result="backing"/>
 <feGaussianBlur in="cut" stdDeviation="2.2" result="blur"/><feOffset in="blur" dy="2.5" result="drop"/>
+<feFlood flood-color="#17181D" flood-opacity="0.22"/><feComposite in2="drop" operator="in" result="shadow"/>
+<feMerge><feMergeNode in="shadow"/><feMergeNode in="backing"/><feMergeNode in="SourceGraphic"/></feMerge>
+</filter>
+<!-- The same for small stickers, whose drawings enclose nothing large: grown less, so they keep their shape. -->
+<filter id="sticker-sm" x="-40%" y="-40%" width="180%" height="180%" color-interpolation-filters="sRGB">
+<feMorphology in="SourceAlpha" operator="dilate" radius="8" result="grown"/>
+<feMorphology in="grown" operator="erode" radius="5" result="cut"/>
+<feFlood flood-color="#FFFFFF"/><feComposite in2="cut" operator="in" result="backing"/>
+<feGaussianBlur in="cut" stdDeviation="1.6" result="blur"/><feOffset in="blur" dy="1.8" result="drop"/>
 <feFlood flood-color="#17181D" flood-opacity="0.22"/><feComposite in2="drop" operator="in" result="shadow"/>
 <feMerge><feMergeNode in="shadow"/><feMergeNode in="backing"/><feMergeNode in="SourceGraphic"/></feMerge>
 </filter>
