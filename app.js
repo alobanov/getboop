@@ -1,6 +1,6 @@
 // What moves on the page: parts coming into view as they are scrolled to, the year's
-// dots filling in, a habit counting up to done, and two inhabitants walking the dark
-// band, as they walk along the bottom of the app.
+// dots filling in, and a habit counting up to done. The inhabitants walking the dark band
+// are CSS alone (see .walker).
 
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -82,43 +82,6 @@
       setTimeout(step, reduced ? 0 : 500);
     });
   }
-
-  // The walk: six frames a step, along the line and back.
-  const way = document.getElementById('walkway');
-  if (!way) return;
-  const walkers = [...way.querySelectorAll('.walker')].map((el, n) => ({
-    el,
-    who: el.dataset.who,
-    x: n === 0 ? 0.1 : 0.72,
-    dir: n === 0 ? 1 : -1,
-    speed: n === 0 ? 0.03 : 0.045,
-  }));
-  for (const w of walkers) for (let f = 0; f < 6; f++) new Image().src = `img/walk/${w.who}_${f}.svg`;
-  const place = (w) => {
-    w.el.style.transform = `translateX(${w.x * (way.clientWidth - w.el.clientWidth)}px) scaleX(${w.dir})`;
-  };
-  walkers.forEach(place);
-  if (reduced) return;
-  let frame = 0;
-  let last = performance.now();
-  let lastStep = last;
-  const tick = (time) => {
-    const dt = Math.min(0.05, (time - last) / 1000);
-    last = time;
-    for (const w of walkers) {
-      w.x += w.dir * w.speed * dt;
-      if (w.x > 1) { w.x = 1; w.dir = -1; }
-      if (w.x < 0) { w.x = 0; w.dir = 1; }
-      place(w);
-    }
-    if (time - lastStep > 125) {
-      lastStep = time;
-      frame = (frame + 1) % 6;
-      for (const w of walkers) w.el.src = `img/walk/${w.who}_${frame}.svg`;
-    }
-    requestAnimationFrame(tick);
-  };
-  requestAnimationFrame(tick);
 })();
 
 // The top bar gets an edge once the page has scrolled under it.
