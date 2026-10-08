@@ -129,3 +129,33 @@
   addEventListener('scroll', mark, { passive: true });
   mark();
 })();
+
+// A tilted phone's body: thin slabs stacked behind its screen, each a step further back,
+// drawn in as a rounded titanium edge would be (narrower and darker at the faces, lit
+// across the middle), with its side buttons standing out on the edge turned to us.
+document.querySelectorAll('.phone.tilt').forEach((phone) => {
+  const depth = 26;
+  for (let i = 1; i <= depth; i++) {
+    const t = (i - 0.5) / depth;
+    const bulge = Math.sqrt(1 - (2 * t - 1) ** 2);
+    const slab = document.createElement('i');
+    slab.className = 'edge';
+    slab.style.transform = `translateZ(${-i}px)`;
+    slab.style.inset = `${(1 - bulge) * 4}px`;
+    const dark = 12 + bulge * 10;
+    const light = 30 + bulge * 42;
+    slab.style.background = `linear-gradient(105deg, hsl(230 5% ${dark}%) 0%, hsl(230 5% ${dark + 8}%) 55%, hsl(230 6% ${light}%) 82%, hsl(230 7% ${light + 14}%) 92%, hsl(230 5% ${light - 6}%) 100%)`;
+    phone.prepend(slab);
+  }
+  for (const [top, height] of [['24%', '11%'], ['58%', '7%']]) {
+    for (let z = 8; z <= 18; z++) {
+      const button = document.createElement('i');
+      button.className = 'button';
+      Object.assign(button.style, { top, height, transform: `translateZ(${-z}px)` });
+      phone.prepend(button);
+    }
+  }
+  const glass = document.createElement('i');
+  glass.className = 'glass';
+  phone.append(glass);
+});

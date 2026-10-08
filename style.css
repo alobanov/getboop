@@ -161,6 +161,20 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .closing-cta { position: relative; display: inline-block; }
 @media (max-width: 899px) { .scribble.hide-sm, .scene .scribble, .scribbled .scribble, .closing-cta .scribble { display: none; } }
 
+/* A phone held up in the air: turned in perspective, its body given depth by thin slabs
+   stacked behind the screen, the shadow cast on the paper well below it. */
+.scene:has(.tilt) { perspective: 1600px; }
+.scene:has(.tilt)::before { content: ""; position: absolute; left: 18%; right: 16%; bottom: -5%; height: 8%; border-radius: 50%; background: radial-gradient(closest-side, rgba(23, 24, 29, 0.42), rgba(23, 24, 29, 0)); filter: blur(4px); z-index: 0; animation: shadow 7s ease-in-out infinite; }
+@keyframes shadow { 50% { transform: scale(0.9); opacity: 0.75; } }
+.phone.tilt { transform-style: preserve-3d; filter: none; transform: rotateX(14deg) rotateY(-24deg) rotateZ(6deg); animation: hover 7s ease-in-out infinite; }
+.phone.tilt .edge { position: absolute; border-radius: 15.6% / 7.5%; }
+.phone.tilt .button { position: absolute; right: -3px; width: 8px; border-radius: 3px; background: linear-gradient(90deg, #2A2B30, #8A8C94 60%, #3A3B42); }
+/* Light across the glass, the way it catches a phone held up. */
+.phone.tilt .glass { position: absolute; left: 5.1%; top: 2.2%; width: 89.8%; height: 95.6%; z-index: 5; pointer-events: none; transform: translateZ(0.5px);
+  background: linear-gradient(125deg, rgba(255, 255, 255, 0.42) 0%, rgba(255, 255, 255, 0.12) 30%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, 0) 72%, rgba(255, 255, 255, 0.16) 100%);
+  -webkit-mask: url(img/screen_mask.png) center / 100% 100% no-repeat; mask: url(img/screen_mask.png) center / 100% 100% no-repeat; }
+@keyframes hover { 0%, 100% { transform: rotateX(14deg) rotateY(-24deg) rotateZ(6deg) translateY(0); } 50% { transform: rotateX(12deg) rotateY(-20deg) rotateZ(5deg) translateY(-10px); } }
+
 /* The ribbon: a quiet line of what Boop does, drifting by between two hairlines, fading
    out at both ends. */
 .ribbon { position: relative; z-index: 4; border-block: 1px solid var(--line); background: rgba(255, 255, 255, 0.55); overflow: hidden;
@@ -199,7 +213,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .feature.green .scene::before { background: #E3F5EC; }
 .ticks { list-style: none; margin: 22px 0 0; padding: 0; display: grid; gap: 10px; }
 .ticks li { display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; }
-.ticks svg { width: 20px; height: 20px; margin-top: 3px; fill: none; stroke: var(--coral); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.ticks svg { width: 22px; height: 22px; margin-top: 1px; fill: none; stroke: var(--coral); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* How it works: three tiles, the words on top and the app's screen rising from the bottom. */
 .how-row { display: grid; gap: 16px; margin-top: 28px; }
@@ -209,8 +223,10 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .tile.how .ticks { margin-top: 14px; gap: 6px; font-size: 0.93rem; }
 .tile.how .phone.rise { position: absolute; left: 50%; top: 52%; width: 70%; transform: translateX(-50%) rotate(-3deg); }
 .tile.how:nth-child(2) .phone.rise { transform: translateX(-50%) rotate(2deg); }
-.tile.blue { background: #E9ECFF; }
-.tile.green { background: #E3F5EC; }
+/* The tints are the app's own light backgrounds, amber, sky, lavender, fuchsia and rose,
+   at 12% on white (amber, nearest the cream paper, at 20%) rather than the app's 5%. */
+.tile.blue { background: #E2EBFD; }
+.tile.green { background: #EBE2FD; }
 @media (max-width: 899px) { .tile.how { min-height: 640px; } .tile.how .phone.rise { width: min(62%, 280px); top: 48%; } }
 
 /* Inhabitants, on a dark band: the words and a character's page, then the streak they
@@ -265,9 +281,9 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .grad-cool { background: linear-gradient(110deg, #8F9BFF, #F06FB3 50%, #FFA23A); -webkit-background-clip: text; background-clip: text; color: transparent; font-size: clamp(3rem, 6vw, 5rem); }
 .tile.dark { background: #15173A; color: #F1F2FF; }
 .tile.dark .kicker { color: #9EA3D6; }
-.tile.warm { background: #FFF1C9; }
-.tile.lilac { background: #ECEBFF; }
-.tile.mint { background: #E1F5EA; }
+.tile.warm { background: #FCEFD0; }
+.tile.lilac { background: #FDE2FA; }
+.tile.mint { background: #FDE2E7; }
 
 .t-year .dots { margin-top: 20px; display: grid; grid-template-columns: repeat(26, minmax(0, 1fr)); gap: 4px; }
 @media (max-width: 600px) { .t-year .dots { grid-template-columns: repeat(24, minmax(0, 1fr)); } }
@@ -383,7 +399,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal, .js .reveal { opacity: 1; transform: none; transition: none; }
-  .float, .ribbon .track, .store::before { animation: none; }
+  .float, .ribbon .track, .store::before, .phone.tilt, .scene:has(.tilt)::before { animation: none; }
   .hl path { animation: none; stroke-dashoffset: 0; }
 }
 
