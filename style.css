@@ -460,3 +460,28 @@ a.pill b { color: var(--coral); font-weight: 700; }
 .night { padding-top: 40px; }
 .night .grid { align-items: end; }
 .night .streak-wrap { padding-top: 40px; }
+
+/* The closing, a slim strip: the icon, a line and the button in one row. */
+.closing { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 16px 28px; margin: 56px 0 48px; padding: 26px 32px; text-align: left; border-radius: 28px; }
+.closing h2 { margin: 0; font-size: clamp(1.7rem, 3vw, 2.3rem); }
+.closing .app-icon { width: 60px; height: 60px; margin: 0; border-radius: 17px; box-shadow: 0 0 0 4px #fff, var(--shadow-sm); }
+.closing .app-icon svg { width: 44px; height: 44px; }
+@media (max-width: 600px) { .closing { flex-direction: column; text-align: center; } }
+
+/* The inhabitants on the page's own paper, not a dark band: ink lines, white discs, the
+   walkers drawn black as they are. */
+.night { margin-top: 40px; padding-top: 24px; background: none; color: var(--text); overflow: visible; }
+.night .sub { color: var(--muted); }
+.kicker.on-dark { color: var(--muted); }
+.night h2 .hl { color: var(--coral); }
+.night .hl path { stroke: var(--coral); }
+.night .scribble.sun { color: var(--coral); }
+.night .scribble.sun svg path { stroke: var(--coral); }
+.night .streak::before { background: rgba(23, 24, 29, 0.1); }
+.night .streak::after { box-shadow: none; }
+.night .disc { background: var(--surface); border-color: rgba(23, 24, 29, 0.18); color: rgba(23, 24, 29, 0.35); }
+.night .met .disc { box-shadow: 0 0 0 5px rgba(246, 201, 69, 0.4), var(--shadow-sm); }
+.night .stop small { color: var(--muted); }
+.night .met small { color: var(--coral); }
+.night .walkway { border-bottom-color: rgba(23, 24, 29, 0.15); }
+.night .walker img { filter: none; }
