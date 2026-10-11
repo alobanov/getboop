@@ -525,3 +525,16 @@ a.pill b { color: var(--coral); font-weight: 700; }
 .night .stop b { font-size: 0.9rem; white-space: nowrap; }
 .night .met small { font-size: 0.75rem; white-space: nowrap; }
 @media (min-width: 900px) { .night .streak { overflow: visible; } }
+
+/* The hero's words, given air: the underline close under its words, the line under the
+   title set apart, the three steps side by side as short columns. */
+.hero h1 { margin: 22px 0 28px; }
+.hero h1 .hl svg { bottom: -0.06em; left: 0; width: 100%; }
+.hero .sub { max-width: 30em; font-size: clamp(1.05rem, 1.5vw, 1.18rem); }
+@media (min-width: 640px) {
+  .hero .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; max-width: none; margin-top: 30px; }
+  .hero .steps li { grid-template-columns: none; align-items: start; gap: 8px; }
+  .hero .steps .sticker { width: 40px; height: 40px; }
+  .hero .steps b { font-size: 1.15rem; margin-bottom: 2px; }
+  .hero .steps span { font-size: 0.92rem; line-height: 1.4; }
+}
