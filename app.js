@@ -1,6 +1,6 @@
 // What moves on the page: parts coming into view as they are scrolled to, the year's
-// dots filling in, and a habit counting up to done. The inhabitants walking the dark band
-// are CSS alone (see .walker).
+// dots filling in, and a habit counting up to done. The inhabitants walking the line are CSS
+// alone (see .walker), and say something when tapped.
 
 (() => {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -31,6 +31,39 @@
   };
 
   document.querySelectorAll('.reveal').forEach((el) => whenSeen(el, () => el.classList.add('in')));
+
+  // The pen's notes: each arrow waits undrawn, then writes itself with its words once seen.
+  if (!reduced) {
+    document.querySelectorAll('.scribble').forEach((note) => {
+      note.querySelectorAll('svg path').forEach((path) => path.setAttribute('pathLength', '1'));
+      note.classList.add('ink-wait');
+      whenSeen(note, () => setTimeout(() => note.classList.remove('ink-wait'), 250));
+    });
+  }
+
+  // An inhabitant tapped stops where it is and says one of its lines from the app, the
+  // bubble hung on the walkway above it so it reads the right way round on the way back.
+  const walkway = document.getElementById('walkway');
+  if (walkway) {
+    walkway.querySelectorAll('.walker').forEach((walker) => {
+      const lines = (walker.dataset.says || '').split('|');
+      let next = 0, timer = 0, bubble = null;
+      walker.addEventListener('click', () => {
+        clearTimeout(timer);
+        bubble?.remove();
+        walker.classList.add('talking');
+        const box = walker.getBoundingClientRect();
+        const way = walkway.getBoundingClientRect();
+        bubble = document.createElement('span');
+        bubble.className = 'say';
+        bubble.textContent = lines[next++ % lines.length];
+        bubble.style.left = `${box.left - way.left + box.width / 2}px`;
+        bubble.style.top = `${box.top - way.top + 6}px`;
+        walkway.append(bubble);
+        timer = setTimeout(() => { bubble.remove(); bubble = null; walker.classList.remove('talking'); }, 2600);
+      });
+    });
+  }
 
   // The year in dots: today's date, the days so far filling in one after another.
   const dots = document.getElementById('dots');

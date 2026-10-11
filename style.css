@@ -485,3 +485,32 @@ a.pill b { color: var(--coral); font-weight: 700; }
 .night .met small { color: var(--coral); }
 .night .walkway { border-bottom-color: rgba(23, 24, 29, 0.15); }
 .night .walker img { filter: none; }
+
+/* Questions, answered: each a strip of paper that opens on a tap, no script needed. */
+.faq-list { display: grid; gap: 12px; max-width: 760px; margin: 28px auto 0; }
+.qa { border-radius: 22px; background: var(--surface); box-shadow: var(--shadow-sm); }
+.qa summary { position: relative; display: block; padding: 20px 64px 20px 24px; cursor: pointer; list-style: none; font: 400 1.3rem/1.25 var(--pen); }
+.qa summary::-webkit-details-marker { display: none; }
+.qa-plus { position: absolute; right: 22px; top: 50%; width: 22px; height: 22px; margin-top: -11px; }
+.qa-plus::before, .qa-plus::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 3px; margin-top: -1.5px; border-radius: 3px; background: var(--coral); transition: transform 0.25s ease; }
+.qa-plus::after { transform: rotate(90deg); }
+.qa[open] .qa-plus::after { transform: rotate(0deg); }
+.qa p { margin: 0; padding: 0 24px 22px; color: var(--muted); line-height: 1.55; }
+.faq .scribbled { text-align: center; }
+.faq-more { text-align: center; color: var(--muted); margin-top: 22px; }
+.faq-more a { color: var(--ink); }
+
+/* The pen's notes write themselves: the arrow drawn, then the words, as each comes into view. */
+.js .scribble.ink-wait svg path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.js .scribble.ink-wait span { opacity: 0; }
+.js .scribble svg path { transition: stroke-dashoffset 0.6s ease-out; }
+.js .scribble span { transition: opacity 0.4s ease 0.45s; }
+
+/* A tap on an inhabitant stops it, and it says something of its own, as in the app. */
+.walker { cursor: pointer; pointer-events: auto; }
+.walker.talking, .walker.talking img { animation-play-state: paused; }
+.say { position: absolute; z-index: 6; padding: 8px 12px; border-radius: 14px; background: var(--surface); box-shadow: var(--shadow-sm); font: 400 1.2rem/1.1 var(--pen); color: var(--text); white-space: nowrap; transform: translate(-50%, -100%); pointer-events: none; animation: say-in 0.25s cubic-bezier(0.3, 1.5, 0.5, 1); }
+.say::after { content: ""; position: absolute; left: 50%; bottom: -6px; width: 12px; height: 12px; margin-left: -6px; background: inherit; transform: rotate(45deg); border-radius: 2px; }
+@keyframes say-in { from { opacity: 0; transform: translate(-50%, -80%) scale(0.8); } }
+@media (prefers-reduced-motion: reduce) { .js .scribble.ink-wait svg path { stroke-dashoffset: 0; } .js .scribble.ink-wait span { opacity: 1; } }
+.faq .qa { text-align: left; }
