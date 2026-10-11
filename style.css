@@ -363,7 +363,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .plus-bento { display: grid; gap: 16px; margin-top: 72px; }
 @media (min-width: 900px) {
   .plus-bento { grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 112px; }
-  .t-plus { grid-column: span 2; grid-row: span 3; }
+  .t-plus { grid-column: span 2; grid-row: span 4; }
 }
 .t-plus { background: linear-gradient(140deg, #FFE7A1 0%, #FFC9A8 55%, #FFB3B8 100%); justify-content: flex-end; }
 .t-plus h2 { margin-top: 8px; font-size: clamp(2.4rem, 4.6vw, 3.8rem); }
