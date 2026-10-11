@@ -431,3 +431,25 @@ h2 { line-height: 1.06; }
 /* The pen has one weight: a hairline of its own ink gives the large lines their body. */
 h1, h2, .claim:not(.small), .huge { -webkit-text-stroke: 0.035em currentColor; paint-order: stroke fill; }
 .grad-warm, .grad-cool { -webkit-text-stroke: 0; }
+
+/* What's new: a release a section, its big things as tiles with a sticker, the rest as ticked lists. */
+.changelog { max-width: 56em; }
+.release { padding: 8px 0 40px; border-bottom: 1px dashed rgba(23, 24, 29, 0.14); margin-bottom: 40px; }
+.release:last-child { border-bottom: 0; }
+.rel-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 22px; }
+.rel-head h2 { margin: 0 !important; font-size: clamp(2.4rem, 6vw, 3.2rem) !important; }
+.rel-head .when { color: var(--muted); font-size: 0.95rem; }
+.highlights { display: grid; gap: 16px; margin-bottom: 28px; }
+@media (min-width: 720px) { .highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.tile.hi { min-height: 0; padding: 24px 24px 26px; }
+.tile.hi .sticker { width: 56px; height: 56px; padding: 5px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: url(#sticker-sm); margin-bottom: 12px; }
+.tile.hi h3 { font-size: 1.6rem; line-height: 1.1; margin: 0 0 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.tile.hi p { color: #3C3D48; font-size: 0.98rem; line-height: 1.5; }
+.tile.hi .tag { font: 600 0.75rem/1 var(--font); letter-spacing: 0; padding: 5px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.75); color: #3C3D48; }
+.tile.hi.mint { background: #DDF3EA; }
+.changelog h3.kind { margin: 26px 0 4px; font-size: 1.35rem; }
+.changelog .ticks { margin-top: 8px; gap: 8px; }
+.changelog .first { font-size: 1.1rem; }
+a.pill { text-decoration: none; color: var(--text); transition: transform 0.2s ease, box-shadow 0.2s ease; }
+a.pill:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
+a.pill b { color: var(--coral); font-weight: 700; }
