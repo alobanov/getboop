@@ -318,8 +318,10 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .peekers img:nth-child(2) { transform: rotate(6deg) translateY(-14px); }
 .peekers span { display: grid; place-items: center; font-weight: 800; font-size: 1.6rem; color: var(--muted); border: 2px dashed rgba(23, 24, 29, 0.15); background: #FFFCF4; transform: rotate(8deg); }
 
-.t-zero .huge { font-size: clamp(5.5rem, 11vw, 8.5rem); }
-.t-zero .claim.small { margin-top: 10px !important; }
+.t-zero .zero-icon { width: 54px; height: 54px; padding: 5px; margin: 6px 0 10px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: url(#sticker-sm); }
+.t-zero .claim { font-size: 1.7rem; line-height: 1.1; }
+.t-zero .note { margin-top: 10px !important; }
+.t-zero .note a { color: var(--ink); }
 
 .t-look .phone.rise { position: absolute; left: 50%; top: 40%; width: 92%; transform: translateX(-50%) rotate(-4deg); }
 
@@ -453,3 +455,8 @@ h1, h2, .claim:not(.small), .huge { -webkit-text-stroke: 0.035em currentColor; p
 a.pill { text-decoration: none; color: var(--text); transition: transform 0.2s ease, box-shadow 0.2s ease; }
 a.pill:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 a.pill b { color: var(--coral); font-weight: 700; }
+
+/* The inhabitants' band, short: the words beside the streak, the walkers under them. */
+.night { padding-top: 40px; }
+.night .grid { align-items: end; }
+.night .streak-wrap { padding-top: 40px; }
