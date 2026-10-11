@@ -514,3 +514,14 @@ a.pill b { color: var(--coral); font-weight: 700; }
 @keyframes say-in { from { opacity: 0; transform: translate(-50%, -80%) scale(0.8); } }
 @media (prefers-reduced-motion: reduce) { .js .scribble.ink-wait svg path { stroke-dashoffset: 0; } .js .scribble.ink-wait span { opacity: 1; } }
 .faq .qa { text-align: left; }
+
+/* The streak, even: small discs with room for the met ones' halo, the day under each in
+   one row, a name only under those who came. */
+.night .streak { grid-template-columns: repeat(8, minmax(46px, 1fr)); grid-template-rows: auto; gap: 6px; padding: 10px 6px 4px; margin: 0 -6px; align-items: start; }
+.night .streak::before, .night .streak::after { top: 33px; }
+.night .stop { grid-template-rows: 46px 1.3em 1.2em; gap: 6px; }
+.night .disc { width: 46px; height: 46px; margin: 0; font-size: 1.05rem; }
+.night .met .disc { box-shadow: 0 0 0 4px rgba(246, 201, 69, 0.45), var(--shadow-sm); }
+.night .stop b { font-size: 0.9rem; white-space: nowrap; }
+.night .met small { font-size: 0.75rem; white-space: nowrap; }
+@media (min-width: 900px) { .night .streak { overflow: visible; } }
