@@ -434,24 +434,29 @@ h2 { line-height: 1.06; }
 h1, h2, .claim:not(.small), .huge { -webkit-text-stroke: 0.035em currentColor; paint-order: stroke fill; }
 .grad-warm, .grad-cool { -webkit-text-stroke: 0; }
 
-/* What's new: a release a section, its big things as tiles with a sticker, the rest as ticked lists. */
-.changelog { max-width: 56em; }
-.release { padding: 8px 0 40px; border-bottom: 1px dashed rgba(23, 24, 29, 0.14); margin-bottom: 40px; }
-.release:last-child { border-bottom: 0; }
-.rel-head { display: flex; align-items: center; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 22px; }
-.rel-head h2 { margin: 0 !important; font-size: clamp(2.4rem, 6vw, 3.2rem) !important; }
-.rel-head .when { color: var(--muted); font-size: 0.95rem; }
-.highlights { display: grid; gap: 16px; margin-bottom: 28px; }
-@media (min-width: 720px) { .highlights { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-.tile.hi { min-height: 0; padding: 24px 24px 26px; }
-.tile.hi .sticker { width: 56px; height: 56px; padding: 5px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; filter: url(#sticker-sm); margin-bottom: 12px; }
-.tile.hi h3 { font-size: 1.6rem; line-height: 1.1; margin: 0 0 8px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
-.tile.hi p { color: #3C3D48; font-size: 0.98rem; line-height: 1.5; }
-.tile.hi .tag { font: 600 0.75rem/1 var(--font); letter-spacing: 0; padding: 5px 9px; border-radius: 999px; background: rgba(255, 255, 255, 0.75); color: #3C3D48; }
-.tile.hi.mint { background: #DDF3EA; }
-.changelog h3.kind { margin: 26px 0 4px; font-size: 1.35rem; }
-.changelog .ticks { margin-top: 8px; gap: 8px; }
-.changelog .first { font-size: 1.1rem; }
+/* What's new, as the app shows it: a column of plain paper, each version its number and
+   day, a line on the whole of it, its main changes with a doodle on a soft spot of its own
+   colour, then everything else with a small label; the pen's dashes between versions. */
+.changelog { max-width: 38em; }
+.changelog h1 { margin-bottom: 36px; }
+.release { padding-bottom: 40px; margin-bottom: 40px; background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='6'%3E%3Cpath d='M2 3.4L16 2.8M26 3L41 3.5M51 3.2L66 2.7M76 3L90 3.4M100 3L115 2.6M125 3.1L140 3.5M150 3L164 2.7M174 3.2L189 3.4M199 2.9L214 2.8M224 3.2L238 3' fill='none' stroke='%2317181D' stroke-opacity='.35' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E") left bottom repeat-x; }
+.release:last-child { background: none; padding-bottom: 0; margin-bottom: 0; }
+.rel-head { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 0 12px; }
+.changelog .rel-head h2 { margin: 0; font-size: 2.5rem; line-height: 1.15; }
+.rel-head .when { padding-bottom: 7px; color: var(--muted); font-size: 0.92rem; font-weight: 500; }
+.changelog .tagline { margin: 6px 0 0; font-size: 1.12rem; line-height: 1.4; }
+.change { display: flex; gap: 14px; margin-top: 22px; }
+.change h3 { margin: 0 0 4px; font-size: 1.45rem; line-height: 1.15; }
+.changelog .change p { margin: 0; color: rgba(23, 24, 29, 0.75); font-size: 1rem; line-height: 1.45; }
+.spot { flex: none; width: 64px; height: 64px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--c); }
+.spot svg { width: 42px; height: 42px; fill: none; stroke: var(--c); stroke-width: 2.1; stroke-linecap: round; stroke-linejoin: round; }
+.changelog h3.more { margin: 30px 0 0; font-size: 1.5rem; line-height: 1.15; }
+.rest { list-style: none; margin: 0; padding: 0; color: rgba(23, 24, 29, 0.8); font-size: 1rem; line-height: 1.45; }
+.rest li { margin-top: 10px; }
+.label { display: inline-block; margin-right: 8px; padding: 1px 7px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; line-height: 1.45; vertical-align: 1px; }
+.label.new { background: rgba(63, 178, 127, 0.18); color: #276E4F; }
+.label.better { background: rgba(74, 168, 240, 0.18); color: #2E6895; }
+.label.fixed { background: rgba(255, 162, 58, 0.18); color: #9E6424; }
 a.pill { text-decoration: none; color: var(--text); transition: transform 0.2s ease, box-shadow 0.2s ease; }
 a.pill:hover { transform: translateY(-2px); box-shadow: var(--shadow); }
 a.pill b { color: var(--coral); font-weight: 700; }
