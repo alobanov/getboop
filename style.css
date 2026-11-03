@@ -623,3 +623,30 @@ img.app-icon { display: block; object-fit: cover; }
 .chips.left { right: auto; left: max(0%, calc(50% - 270px)); justify-items: start; }
 .chips.left .hchip:nth-child(2) { transform: rotate(-2deg) translateX(18px); }
 .chips .hchip:nth-child(4) { transform: rotate(-3deg) translateX(-8px); }
+
+/* The tour: the five rows as slides, one at a time, going round by themselves. Tabs on top
+   with a bar filling while one shows; arrows at the sides; a swipe on a phone. Without the
+   script, the rows simply stand one under another. */
+.tour-tabs { display: none; }
+.tour-arrow { display: none; }
+.js .tour-tabs { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 26px 0 8px; }
+.tour-tab { position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: 8px; padding: 9px 16px 9px 11px; border: 0; border-radius: 999px; background: rgba(255, 255, 255, 0.75); box-shadow: inset 0 0 0 1px var(--line); font: 500 0.98rem/1 var(--font); color: var(--muted); cursor: pointer; transition: background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease, transform 0.2s ease; }
+.tour-tab:hover { color: var(--text); transform: translateY(-1px); }
+.tour-tab svg { width: 24px; height: 24px; fill: none; stroke: var(--c); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.tour-tab.active { background: #fff; color: var(--text); box-shadow: var(--shadow-sm), inset 0 0 0 1.5px color-mix(in srgb, var(--c) 55%, transparent); }
+.tour-tab .bar { position: absolute; left: 0; bottom: 0; height: 3px; width: 100%; background: var(--c); transform: scaleX(0); transform-origin: left; }
+.tour-tab.active .bar { animation: tour-fill var(--tour-ms, 7000ms) linear forwards; }
+.tour.paused .tour-tab.active .bar { animation-play-state: paused; }
+@keyframes tour-fill { to { transform: scaleX(1); } }
+.js .tour-stage { position: relative; }
+.js .tour-track { display: grid; }
+.js .tour-track .slide { grid-area: 1 / 1; opacity: 0; visibility: hidden; transform: translateX(var(--from, 40px)); transition: opacity 0.22s ease, transform 0.3s ease-in, visibility 0s 0.3s; }
+.js .tour-track .slide.active { opacity: 1; visibility: visible; transform: none; transition: opacity 0.45s ease 0.18s, transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) 0.18s, visibility 0s; }
+.tour-bar { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 26px 0 8px; }
+.js .tour-tabs { margin: 0; }
+.js .tour-arrow { display: grid; place-items: center; flex: none; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #fff; box-shadow: var(--shadow-sm); cursor: pointer; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+.tour-arrow:hover { transform: scale(1.08); box-shadow: var(--shadow); }
+.tour-arrow svg { width: 20px; height: 20px; fill: none; stroke: var(--text); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+@media (max-width: 600px) { .tour-tab span { display: none; } .tour-tab { padding: 9px 11px; } }
+@media (prefers-reduced-motion: reduce) { .js .tour-track .slide { transition: none; transform: none; } .tour-tab.active .bar { animation: none; transform: scaleX(1); } }
+@media (max-width: 600px) { .tour-bar { gap: 6px; } .js .tour-tabs { gap: 5px; flex-wrap: nowrap; } .tour-tab { padding: 8px; } .tour-tab svg { width: 22px; height: 22px; } .js .tour-arrow { width: 36px; height: 36px; } }

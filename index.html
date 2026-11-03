@@ -15,11 +15,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@500;700&family=Pangolin&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=202611032000">
+<link rel="stylesheet" href="style.css?v=202611032140">
 <!-- .reveal only starts hidden once this proves script actually runs, so a blocked or
      failed app.js never leaves the page's content stuck invisible. -->
 <script>document.documentElement.classList.add('js');</script>
-<script src="app.js?v=202610120010" defer></script>
+<script src="app.js?v=202611032100" defer></script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -70,10 +70,13 @@
 <div class="wrap">
 <section class="section" id="how">
 <h2 class="reveal">A diary, a habit tracker<br>and a sketchbook.</h2>
-<div class="frows">
-<article class="frow reveal" style="--tint:#FFA23A">
+<div class="tour reveal" aria-roledescription="carousel" aria-label="What Boop does">
+<div class="tour-bar"><button type="button" class="tour-arrow prev" aria-label="Previous"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5 L8 12 L15 19"/></svg></button><div class="tour-tabs" role="tablist"><button type="button" role="tab" class="tour-tab active" aria-controls="tour-0" aria-selected="true" style="--c:#FFA23A"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="img/doodles.svg#pencil"/></svg><span>Day</span><i class="bar" aria-hidden="true"></i></button><button type="button" role="tab" class="tour-tab" aria-controls="tour-1" aria-selected="false" style="--c:#3FB27F"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="img/doodles.svg#brush"/></svg><span>Sketch</span><i class="bar" aria-hidden="true"></i></button><button type="button" role="tab" class="tour-tab" aria-controls="tour-2" aria-selected="false" style="--c:#8B6CF0"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="img/doodles.svg#water"/></svg><span>Habits</span><i class="bar" aria-hidden="true"></i></button><button type="button" role="tab" class="tour-tab" aria-controls="tour-3" aria-selected="false" style="--c:#4AA8F0"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="img/doodles.svg#camera"/></svg><span>Month</span><i class="bar" aria-hidden="true"></i></button><button type="button" role="tab" class="tour-tab" aria-controls="tour-4" aria-selected="false" style="--c:#3FB27F"><svg viewBox="0 0 40 40" aria-hidden="true"><use href="img/doodles.svg#leaf"/></svg><span>Pot</span><i class="bar" aria-hidden="true"></i></button></div><button type="button" class="tour-arrow next" aria-label="Next"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5 L16 12 L9 19"/></svg></button></div>
+<div class="tour-stage">
+<div class="tour-track">
+<article id="tour-0" role="tabpanel" aria-roledescription="slide" aria-label="1 of 5" class="frow slide active" style="--tint:#FFA23A">
 <div class="frow-text">
-<p class="frow-num">01</p>
+<p class="frow-num">01 / 05</p>
 <h3>A page for every day.</h3>
 <p class="note">Write what happened, pick a mood, drop in photos. The day gets a doodle of its own, or any of two hundred others.</p>
 <ul class="all frow-list"><li><span class="spot" style="--c:#F06FB3" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#flower"/></svg></span><span>A mood: 15 faces that blink and hop</span></li><li><span class="spot" style="--c:#4AA8F0" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#camera"/></svg></span><span>Photos in a pile, sketches beside the words</span></li><li><span class="spot" style="--c:#8B6CF0" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#palette"/></svg></span><span>Your own sheet, crumpled, kraft or torn</span></li></ul>
@@ -83,9 +86,9 @@
 <figure class="polaroid p-right" aria-hidden="true"><img src="img/photo_deer.webp" width="480" height="480" alt="" loading="lazy"></figure>
 </div>
 </article>
-<article class="frow flip reveal" style="--tint:#3FB27F">
+<article id="tour-1" role="tabpanel" aria-roledescription="slide" aria-label="2 of 5" class="frow slide flip" style="--tint:#3FB27F">
 <div class="frow-text">
-<p class="frow-num">02</p>
+<p class="frow-num">02 / 05</p>
 <h3>Trace a photo, keep the sketch.</h3>
 <p class="note">Draw over a photo of the day, or tap Draw for me and the phone draws it, in pen or in crayon. The photo goes, the sketch stays.</p>
 <ul class="all frow-list"><li><span class="spot" style="--c:#2B3AC9" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#brush"/></svg></span><span>A pen, a crayon, an eraser, undo</span></li><li><span class="spot" style="--c:#FFA23A" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#star"/></svg></span><span>Draw for me, done on the phone itself</span></li><li><span class="spot" style="--c:#3FB27F" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#pencil"/></svg></span><span>Up to three sketches a day</span></li></ul>
@@ -95,9 +98,9 @@
 <figure class="polaroid p-left" aria-hidden="true"><img src="img/photo_vase.webp" width="480" height="480" alt="" loading="lazy"></figure>
 </div>
 </article>
-<article class="frow reveal" style="--tint:#8B6CF0">
+<article id="tour-2" role="tabpanel" aria-roledescription="slide" aria-label="3 of 5" class="frow slide" style="--tint:#8B6CF0">
 <div class="frow-text">
-<p class="frow-num">03</p>
+<p class="frow-num">03 / 05</p>
 <h3>Habits that color your days.</h3>
 <p class="note">Give each habit a color. Do it, and the day&#8217;s doodle takes it on: the year shows at a glance what you kept up.</p>
 <ul class="all frow-list"><li><span class="spot" style="--c:#2FB5B0" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#water"/></svg></span><span>A tick, a count, minutes or a checklist</span></li><li><span class="spot" style="--c:#FF6B5E" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#run"/></svg></span><span>Steps from Apple Health</span></li><li><span class="spot" style="--c:#FFA23A" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#hourglass"/></svg></span><span>Statistics by month, and slip days</span></li></ul>
@@ -107,15 +110,9 @@
 <div class="chips" aria-hidden="true"><span class="hchip" style="--c:#4AA8F0"><i></i>Water <b>6/8</b></span><span class="hchip" style="--c:#8B6CF0"><i></i>Read <b>30 min</b></span><span class="hchip" style="--c:#3FB27F"><i></i>Morning run <b>&#10003;</b></span></div>
 </div>
 </article>
-</div>
-</section>
-
-<section class="section" id="lately">
-<h2 class="reveal">Keep writing, and it grows.</h2>
-<div class="frows">
-<article class="frow flip reveal" style="--tint:#4AA8F0">
+<article id="tour-3" role="tabpanel" aria-roledescription="slide" aria-label="4 of 5" class="frow slide flip" style="--tint:#4AA8F0">
 <div class="frow-text">
-<p class="frow-num">04</p>
+<p class="frow-num">04 / 05</p>
 <h3>Your month in photos and doodles.</h3>
 <p class="note">The month shows each day by its photo, sketch or doodle. When it ends, Boop sums it up in one picture to share.</p>
 <ul class="all frow-list"><li><span class="spot" style="--c:#4AA8F0" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#camera"/></svg></span><span>Each day by its photo, sketch or doodle</span></li><li><span class="spot" style="--c:#F06FB3" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#envelope"/></svg></span><span>A recap picture when the month is done</span></li><li><span class="spot" style="--c:#FFA23A" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#star"/></svg></span><span>Your best drawings and longest streak in it</span></li></ul>
@@ -125,9 +122,9 @@
 <div class="chips left" aria-hidden="true"><span class="hchip" style="--c:#4AA8F0"><i></i>October <b>is done</b></span><span class="hchip" style="--c:#F06FB3"><i></i>Share <b>the month</b></span><span class="hchip" style="--c:#FFA23A"><i></i>Best streak <b>31 days</b></span></div>
 </div>
 </article>
-<article class="frow reveal" style="--tint:#3FB27F">
+<article id="tour-4" role="tabpanel" aria-roledescription="slide" aria-label="5 of 5" class="frow slide" style="--tint:#3FB27F">
 <div class="frow-text">
-<p class="frow-num">05</p>
+<p class="frow-num">05 / 05</p>
 <h3>A pot that blooms with your streak.</h3>
 <p class="note">A leaf for every day in a row, and a flower at each milestone. The pot sneezes, giggles and has visitors. Miss a day and nothing dies: the old streak stays beside it in pencil.</p>
 <ul class="all frow-list"><li><span class="spot" style="--c:#3FB27F" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#leaf"/></svg></span><span>A leaf for every day you write</span></li><li><span class="spot" style="--c:#F06FB3" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#flower"/></svg></span><span>A daisy, a tulip, a poppy and a sunflower</span></li><li><span class="spot" style="--c:#FFA23A" aria-hidden="true"><svg viewBox="0 0 40 40"><use href="img/doodles.svg#gift"/></svg></span><span>Visitors and a shelf of things it earns</span></li></ul>
@@ -137,6 +134,8 @@
 <div class="chips" aria-hidden="true"><span class="hchip" style="--c:#4AA8F0"><i></i>Day 3 <b>daisy</b></span><span class="hchip" style="--c:#F06FB3"><i></i>Day 7 <b>tulip</b></span><span class="hchip" style="--c:#FF6B5E"><i></i>Day 14 <b>poppy</b></span><span class="hchip" style="--c:#FFA23A"><i></i>Day 30 <b>sunflower</b></span></div>
 </div>
 </article>
+</div>
+</div>
 </div>
 </section>
 

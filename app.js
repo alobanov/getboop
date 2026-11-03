@@ -155,3 +155,64 @@ document.querySelectorAll('.phone.tilt').forEach((phone) => {
   glass.className = 'glass';
   phone.append(glass);
 });
+
+// The tour: one row at a time, the next coming in after a while on its own, unless a hand
+// is on it, the page is hidden or the tour is out of sight. Tabs and arrows pick a row, a
+// swipe turns it on a phone, the arrow keys too once it has the focus.
+(() => {
+  const tour = document.querySelector('.tour');
+  if (!tour) return;
+  const tabs = [...tour.querySelectorAll('.tour-tab')];
+  const slides = [...tour.querySelectorAll('.slide')];
+  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ms = 7000;
+  tour.style.setProperty('--tour-ms', `${ms}ms`);
+  let at = 0, timer = null, hovered = false, seen = false;
+
+  const show = (next, dir = 1) => {
+    next = (next + slides.length) % slides.length;
+    if (next === at) return;
+    slides[next].style.setProperty('--from', `${dir * 40}px`);
+    slides[at].style.setProperty('--from', `${-dir * 40}px`);
+    slides[at].classList.remove('active');
+    tabs[at].classList.remove('active');
+    tabs[at].setAttribute('aria-selected', 'false');
+    at = next;
+    slides[at].classList.add('active');
+    tabs[at].classList.add('active');
+    tabs[at].setAttribute('aria-selected', 'true');
+    // The bar starts again from empty.
+    const bar = tabs[at].querySelector('.bar');
+    bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
+    schedule();
+  };
+  const running = () => !still && seen && !hovered && !document.hidden;
+  const schedule = () => {
+    clearTimeout(timer);
+    tour.classList.toggle('paused', !running());
+    if (running()) timer = setTimeout(() => show(at + 1), ms);
+  };
+
+  tabs.forEach((tab, i) => tab.addEventListener('click', () => show(i, i > at ? 1 : -1)));
+  tour.querySelector('.tour-arrow.prev').addEventListener('click', () => show(at - 1, -1));
+  tour.querySelector('.tour-arrow.next').addEventListener('click', () => show(at + 1, 1));
+  tour.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') show(at - 1, -1);
+    if (e.key === 'ArrowRight') show(at + 1, 1);
+  });
+  tour.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovered = true; schedule(); } });
+  tour.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hovered = false; schedule(); } });
+  document.addEventListener('visibilitychange', schedule);
+  new IntersectionObserver(([entry]) => { seen = entry.isIntersecting; schedule(); }, { threshold: 0.35 }).observe(tour);
+
+  // A swipe across the stage on a touch screen.
+  const stage = tour.querySelector('.tour-track');
+  let x0 = null, y0 = null;
+  stage.addEventListener('touchstart', (e) => { x0 = e.touches[0].clientX; y0 = e.touches[0].clientY; }, { passive: true });
+  stage.addEventListener('touchend', (e) => {
+    if (x0 === null) return;
+    const dx = e.changedTouches[0].clientX - x0, dy = e.changedTouches[0].clientY - y0;
+    if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy) * 1.4) show(at + (dx < 0 ? 1 : -1), dx < 0 ? 1 : -1);
+    x0 = null;
+  }, { passive: true });
+})();
