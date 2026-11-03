@@ -56,7 +56,7 @@ section[id] { scroll-margin-top: 76px; }
 .char { fill: none; stroke: #17181D; stroke-width: 2.3; stroke-linecap: round; stroke-linejoin: round; }
 .top nav { display: flex; align-items: center; gap: 24px; font-size: 0.95rem; color: var(--muted); }
 .top nav a { text-decoration: none; }
-.top nav a:hover { color: var(--text); }
+.top nav a.link:hover { color: var(--text); }
 @media (max-width: 860px) { .top nav .link { display: none; } }
 
 /* The App Store button, drawn after Apple's badge, linking to Boop's page in the store. */
