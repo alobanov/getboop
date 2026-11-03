@@ -543,3 +543,28 @@ a.pill b { color: var(--coral); font-weight: 700; }
   .hero .steps b { font-size: 1.15rem; margin-bottom: 2px; }
   .hero .steps span { font-size: 0.92rem; line-height: 1.4; }
 }
+
+/* The calm pass (November 2026): the page as quiet as the app. One kind of tile, plain paper
+   white on the dots; lists of what Boop does as doodles on soft spots of their colour, as on
+   What's new; the new felt icon wherever the app's icon stands. */
+img.mark { display: block; object-fit: cover; background: none; }
+img.app-icon { display: block; object-fit: cover; }
+.tile.how { background: var(--surface); }
+.how-row.two { max-width: 900px; margin-left: auto; margin-right: auto; }
+@media (min-width: 900px) { .how-row.two { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.all { list-style: none; margin: 32px auto 0; padding: 0; max-width: 1000px; display: grid; gap: 14px 28px; text-align: left; }
+@media (min-width: 640px) { .all { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 960px) { .all { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.all li { display: flex; align-items: center; gap: 12px; font-size: 1rem; line-height: 1.35; }
+.all .spot { flex: none; width: 44px; height: 44px; display: grid; place-items: center; border-radius: 50%; background: color-mix(in srgb, var(--c) 14%, transparent); }
+.all .spot svg { width: 28px; height: 28px; fill: none; stroke: var(--c); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.plus { text-align: center; }
+.plus-head { max-width: 40em; margin: 0 auto; }
+.plus-head h2 { margin: 6px 0 14px; }
+.plus-head .note { color: var(--muted); font-size: 1.08rem; }
+.plus .all { margin-top: 36px; }
+/* The two newest things show their whole screen: the pot sits low on its page. */
+.how-row.two .tile.how { min-height: 0; padding-bottom: 34px; }
+.how-row.two .phone.rise { position: relative; left: auto; top: auto; width: min(250px, 66%); margin: 26px auto 0; transform: rotate(-2deg); }
+.how-row.two .tile.how:nth-child(2) .phone.rise { transform: rotate(2deg); }
+.plus-head .note { max-width: 30em; margin: 0 auto; }
