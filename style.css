@@ -620,3 +620,6 @@ img.app-icon { display: block; object-fit: cover; }
 .hchip i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
 .hchip b { color: var(--c); font-weight: 700; }
 @media (max-width: 600px) { .polaroid { width: 96px; } .chips { right: 0; } .hchip { font-size: 0.82rem; } }
+.chips.left { right: auto; left: max(0%, calc(50% - 270px)); justify-items: start; }
+.chips.left .hchip:nth-child(2) { transform: rotate(-2deg) translateX(18px); }
+.chips .hchip:nth-child(4) { transform: rotate(-3deg) translateX(-8px); }
