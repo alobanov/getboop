@@ -659,3 +659,6 @@ img.app-icon { display: block; object-fit: cover; }
 .float.bubble { display: grid; place-items: center; width: 54px; height: 54px; border-radius: 50%; background: #fff; box-shadow: var(--shadow-sm); }
 .float.bubble svg { width: 30px; height: 30px; fill: none; stroke: var(--c); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 600px) { .scene .float.tag, .scene .float.chip.weather { display: none; } .float.chip { font-size: 0.8rem; } .float.bubble { width: 44px; height: 44px; } }
+/* The streak's pot on its disc, a sprout and a smile, in its own clay and green. */
+.float.bubble.pot-bubble { width: 62px; height: 62px; }
+.float.bubble .pot { width: 40px; height: 40px; stroke-width: 1.9; }
