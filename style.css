@@ -648,5 +648,5 @@ img.app-icon { display: block; object-fit: cover; }
 .tour-arrow:hover { transform: scale(1.08); box-shadow: var(--shadow); }
 .tour-arrow svg { width: 20px; height: 20px; fill: none; stroke: var(--text); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
 @media (max-width: 600px) { .tour-tab span { display: none; } .tour-tab { padding: 9px 11px; } }
-@media (prefers-reduced-motion: reduce) { .js .tour-track .slide { transition: none; transform: none; } .tour-tab.active .bar { animation: none; transform: scaleX(1); } }
+@media (prefers-reduced-motion: reduce) { .js .tour-track .slide, .js .tour-track .slide.active { transform: none; } }
 @media (max-width: 600px) { .tour-bar { gap: 6px; } .js .tour-tabs { gap: 5px; flex-wrap: nowrap; } .tour-tab { padding: 8px; } .tour-tab svg { width: 22px; height: 22px; } .js .tour-arrow { width: 36px; height: 36px; } }

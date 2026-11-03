@@ -156,18 +156,17 @@ document.querySelectorAll('.phone.tilt').forEach((phone) => {
   phone.append(glass);
 });
 
-// The tour: one row at a time, the next coming in after a while on its own, unless a hand
-// is on it, the page is hidden or the tour is out of sight. Tabs and arrows pick a row, a
+// The tour: one row at a time, the next coming in after a while on its own, unless the
+// page is hidden or the tour is out of sight; a pick by hand starts the wait again. Tabs and arrows pick a row, a
 // swipe turns it on a phone, the arrow keys too once it has the focus.
 (() => {
   const tour = document.querySelector('.tour');
   if (!tour) return;
   const tabs = [...tour.querySelectorAll('.tour-tab')];
   const slides = [...tour.querySelectorAll('.slide')];
-  const still = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const ms = 7000;
   tour.style.setProperty('--tour-ms', `${ms}ms`);
-  let at = 0, timer = null, hovered = false, seen = false;
+  let at = 0, timer = null, seen = false;
 
   const show = (next, dir = 1) => {
     next = (next + slides.length) % slides.length;
@@ -186,7 +185,8 @@ document.querySelectorAll('.phone.tilt').forEach((phone) => {
     bar.style.animation = 'none'; void bar.offsetWidth; bar.style.animation = '';
     schedule();
   };
-  const running = () => !still && seen && !hovered && !document.hidden;
+  // Reduced motion still turns, only without the slide: the swap is a plain fade.
+  const running = () => seen && !document.hidden;
   const schedule = () => {
     clearTimeout(timer);
     tour.classList.toggle('paused', !running());
@@ -200,10 +200,13 @@ document.querySelectorAll('.phone.tilt').forEach((phone) => {
     if (e.key === 'ArrowLeft') show(at - 1, -1);
     if (e.key === 'ArrowRight') show(at + 1, 1);
   });
-  tour.addEventListener('pointerenter', (e) => { if (e.pointerType === 'mouse') { hovered = true; schedule(); } });
-  tour.addEventListener('pointerleave', (e) => { if (e.pointerType === 'mouse') { hovered = false; schedule(); } });
   document.addEventListener('visibilitychange', schedule);
-  new IntersectionObserver(([entry]) => { seen = entry.isIntersecting; schedule(); }, { threshold: 0.35 }).observe(tour);
+  // Seen once a good part of it is on screen: a fifth of it, or half the window, whichever
+  // comes first, since on a phone the tour is taller than the window.
+  new IntersectionObserver(([entry]) => {
+    seen = entry.intersectionRatio > 0.2 || entry.intersectionRect.height > innerHeight * 0.5;
+    schedule();
+  }, { threshold: [0, 0.1, 0.2, 0.3, 0.5] }).observe(tour);
 
   // A swipe across the stage on a touch screen.
   const stage = tour.querySelector('.tour-track');
