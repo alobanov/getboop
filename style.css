@@ -591,3 +591,32 @@ img.app-icon { display: block; object-fit: cover; }
 .hero-top { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px; }
 .hero-icon { width: 112px; height: 112px; border-radius: 26px; transform: rotate(-6deg); box-shadow: 0 0 0 5px #fff, 0 18px 30px -12px rgba(23, 24, 29, 0.35); }
 @media (max-width: 600px) { .hero-icon { width: 88px; height: 88px; border-radius: 21px; } }
+
+/* What Boop is, three rows: the words on one side, the phone whole on the other on a soft
+   spot of the row's colour, with one thing of the day beside it; every other row turned. */
+.frows { display: grid; gap: 56px; margin-top: 40px; }
+.frow { display: grid; gap: 28px; align-items: center; }
+@media (min-width: 900px) {
+  .frows { gap: 24px; }
+  .frow { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; }
+  .frow.flip .frow-text { order: 2; }
+}
+.frow-num { margin: 0 0 6px; font: 400 1.2rem/1 var(--pen); color: var(--tint); }
+.frow h3 { margin: 0 0 12px; font-size: clamp(2rem, 3.6vw, 2.8rem); line-height: 1.05; -webkit-text-stroke: 0.03em currentColor; paint-order: stroke fill; }
+.frow .note { margin: 0; color: var(--muted); font-size: 1.1rem; line-height: 1.55; max-width: 28em; }
+.frow-list.all { margin: 22px 0 0; max-width: none; grid-template-columns: 1fr !important; gap: 12px; }
+.frow-media { position: relative; display: grid; place-items: center; padding: 36px 0; }
+.frow-media::before { content: ""; position: absolute; width: min(430px, 92%); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, color-mix(in srgb, var(--tint) 26%, transparent) 0%, color-mix(in srgb, var(--tint) 10%, transparent) 55%, transparent 72%); }
+.frow-media .phone { width: min(270px, 62vw); transform: rotate(-3deg); }
+.frow.flip .frow-media .phone { transform: rotate(3deg); }
+.polaroid { position: absolute; z-index: 3; width: 128px; margin: 0; padding: 8px 8px 26px; background: #fff; border-radius: 4px; box-shadow: 0 14px 28px -12px rgba(23, 24, 29, 0.4); }
+.polaroid img { display: block; width: 100%; height: auto; aspect-ratio: 1; object-fit: cover; }
+.polaroid::before { content: ""; position: absolute; top: -9px; left: 50%; width: 54px; height: 18px; transform: translateX(-50%) rotate(-4deg); background: color-mix(in srgb, var(--tint) 45%, #fff); opacity: 0.85; }
+.polaroid.p-right { top: 14%; right: max(2%, calc(50% - 250px)); transform: rotate(7deg); }
+.polaroid.p-left { top: 12%; left: max(2%, calc(50% - 250px)); transform: rotate(-7deg); }
+.chips { position: absolute; z-index: 3; right: max(0%, calc(50% - 270px)); top: 22%; display: grid; gap: 10px; justify-items: end; }
+.hchip { display: inline-flex; align-items: center; gap: 8px; padding: 8px 14px 8px 10px; border-radius: 999px; background: #fff; box-shadow: var(--shadow-sm); font-size: 0.92rem; font-weight: 500; white-space: nowrap; }
+.hchip:nth-child(1) { transform: rotate(3deg); } .hchip:nth-child(2) { transform: rotate(-2deg) translateX(-18px); } .hchip:nth-child(3) { transform: rotate(2deg); }
+.hchip i { width: 12px; height: 12px; border-radius: 50%; background: var(--c); }
+.hchip b { color: var(--c); font-weight: 700; }
+@media (max-width: 600px) { .polaroid { width: 96px; } .chips { right: 0; } .hchip { font-size: 0.82rem; } }
