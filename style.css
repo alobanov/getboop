@@ -106,7 +106,11 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .pill i { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); box-shadow: 0 0 0 4px rgba(255, 94, 77, 0.18); }
 
 /* Hero */
-.hero-band { background: radial-gradient(120% 90% at 85% 10%, #FFE9A8 0%, rgba(255, 233, 168, 0) 60%), radial-gradient(80% 70% at 0% 100%, #E8EBFF 0%, rgba(232, 235, 255, 0) 60%); }
+.hero-band { position: relative; }
+/* The hero's light, fading out below it into the paper instead of stopping at a line. */
+.hero-band::before { content: ""; position: absolute; inset: 0 0 -160px; z-index: -1; pointer-events: none;
+  background: radial-gradient(120% 90% at 85% 10%, #FFE9A8 0%, rgba(255, 233, 168, 0) 60%), radial-gradient(80% 70% at 0% 100%, #E8EBFF 0%, rgba(232, 235, 255, 0) 60%);
+  -webkit-mask-image: linear-gradient(to bottom, #000 50%, transparent); mask-image: linear-gradient(to bottom, #000 50%, transparent); }
 .hero { display: grid; gap: 32px; align-items: center; padding: 20px 0 64px; }
 @media (min-width: 940px) { .hero { grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 40px; padding: 24px 0 72px; } }
 .hero h1 { margin: 18px 0 18px; }
@@ -582,3 +586,8 @@ img.app-icon { display: block; object-fit: cover; }
   body::after { right: 0; background-image: url(img/margin_r.svg); background-position: 0 120px; }
   body { position: relative; }
 }
+
+/* The app's icon, large, at the head of the hero, a little askew, the pill beside it. */
+.hero-top { display: flex; align-items: center; flex-wrap: wrap; gap: 14px 20px; }
+.hero-icon { width: 112px; height: 112px; border-radius: 26px; transform: rotate(-6deg); box-shadow: 0 0 0 5px #fff, 0 18px 30px -12px rgba(23, 24, 29, 0.35); }
+@media (max-width: 600px) { .hero-icon { width: 88px; height: 88px; border-radius: 21px; } }
