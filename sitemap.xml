@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://alobanov.github.io/getboop/</loc><lastmod>2026-11-07</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/</loc><lastmod>2026-11-11</lastmod></url>
   <url><loc>https://alobanov.github.io/getboop/privacy/</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://alobanov.github.io/getboop/support/</loc><lastmod>2026-11-03</lastmod></url>
   <url><loc>https://alobanov.github.io/getboop/changelog/</loc><lastmod>2026-11-07</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/faq/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/ja/faq/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/zh-hant/faq/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/ko/faq/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/ru/faq/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/private-diary-no-account/</loc><lastmod>2026-11-11</lastmod></url>
+  <url><loc>https://alobanov.github.io/getboop/photo-to-sketch-diary/</loc><lastmod>2026-11-11</lastmod></url>
 </urlset>
