@@ -417,7 +417,7 @@ h3 { font-size: 1.25rem; line-height: 1.2; letter-spacing: -0.02em; font-weight:
 .foot-col a:hover { color: var(--text); transform: translateY(-2px); }
 .foot-col svg { width: 22px; height: 22px; fill: none; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
 .heart { width: 1.05em; height: 1em; vertical-align: -0.15em; fill: var(--coral); stroke: var(--coral); stroke-width: 1.5; stroke-linejoin: round; transform: rotate(-8deg); }
-.foot-line { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(23, 24, 29, 0.1); font-size: 0.88rem; color: var(--muted); }
+.foot-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 24px; margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(23, 24, 29, 0.1); font-size: 0.88rem; color: var(--muted); }
 
 /* Coming into view, one after another. Hidden only once [js] on <html> proves app.js is
    actually running (set by an inline script in <head>) — so a blocked or broken script
@@ -662,3 +662,6 @@ img.app-icon { display: block; object-fit: cover; }
 /* The streak's pot on its disc, a sprout and a smile, in its own clay and green. */
 .float.bubble.pot-bubble { width: 62px; height: 62px; }
 .float.bubble .pot { width: 40px; height: 40px; stroke-width: 1.9; }
+
+.foot-badge { display: inline-flex; line-height: 0; }
+.foot-badge img { display: block; }
